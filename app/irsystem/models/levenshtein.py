@@ -4,9 +4,19 @@ from get_data import data
 import pprint
 
 
+"""
+Notes:
+    Problem 1:
+        Trails which do not have the - might be unevenly calculated.
+    
+    Problem 2:
+        How to differentiate between sub-trails.
+"""
+
+
 def insert_cost(source, j):
     """
-    Returns the current insertion cost of inserting the j-th character of the
+    Returns the current insertion cost of inserting the [j]-th character of the
     source word.
     """
     return 1
@@ -39,7 +49,9 @@ curr_substitute_function = substitute_cost
 
 def lev_mat(target, source):
     """
-    Calculates the edit-distance matrix.
+    Calculates the edit-distance matrix where the cell [i, j] corresponds to
+    the edit-cost (under) custom parameters) of transforming the first i letters
+    of the target to the first j letters of the source.
 
     * As calculated in A3 *
     """
@@ -79,27 +91,35 @@ def levenshtein(target, source):
 
 def ranked_levs(target, sources):
     """
-    Returns a list of tuples representing the [(document, score)] of the
-    [num_results]-lowest levenshtein scores.
+    Returns a list of tuples representing the [(score, source)] of the
+    [sources] as calculated by the levenshtein() function above.
+
+    Note:
+    Because there are often multiple trails with the same park name,
+    and the Levenshtein edit-distance penalizes strings longer than
+    the query, I have split the string at the '-' which signals a 
+    sub-trail. Therefore:
+        Edwards Lake Cliiffs Trail - Pocket Falls
+            --> Edwards Lake Cliiffs Trail
     """
     edit_distance_rankings = []
 
     for trail in sources:
-        print(target)
         source = trail
-        edit_cost = levenshtein(target, source.split('-', 1)[0])
+        edit_cost = levenshtein(target, source.split(' - ', 1)[0])
         edit_distance_rankings.append((edit_cost, source))
 
     return sorted(edit_distance_rankings, key=lambda tup: tup[0])
 
 
-def test():
-    # trails = [{'name': trail} for trail in data]
+# Code for testing:
 
-    ranks = ranked_levs('Lindsay-Parsons Blue trail', trails)
-    pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(ranks)
+# def test():
+#     trails = [trail for trail in data]
+#     ranks = ranked_levs('Lindsay-Parsons', trails)
+#     pp = pprint.PrettyPrinter(indent=4)
+#     pp.pprint(ranks)
 
 
-if __name__ == '__main__':
-    test()
+# if __name__ == '__main__':
+#     test()
