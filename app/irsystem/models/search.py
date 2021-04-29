@@ -9,16 +9,17 @@ def get_rankings_by_query(query, alpha=0.7, beta=0.3):
     """
     Returns a list of the top 3 rankings in the form (similarity_score, trail_name) given a query string.
     This serves as the main function that is called when a new query is made.
+    alpha -> weight for descriptions similarity
+    beta -> weight for reviews similarity
     """
     sim_descriptions = get_cosine_similarity_ranking(query, 'descriptions')
     sim_reviews = get_cosine_similarity_ranking(query, 'reviews')
     
-    # assert len(sim_descriptions) == len(sim_reviews)s
-    
     # 70 description and 30 reviews
     final_sim = {}
     for name in sim_descriptions:
-        final_sim[name] = alpha * sim_descriptions[name] + beta * sim_reviews[name]
+        final_sim[name] = alpha * sim_descriptions.get(name, 0) + \
+        beta * sim_reviews.get(name, 0)
     
     rankings = [(final_sim[name], name) for name in final_sim]
     rankings.sort(key = lambda x: (-x[0],x[1]))
@@ -47,14 +48,10 @@ def get_cosine_similarity_ranking(query, token_type):
                 val += tf_idf_q * (post[1] * idfs[tok])
                 nums[post[0]] = val
 
-    # rankings = [(nums[i]/(q_norm * doc_norms[i]), i) for i in nums]
-    # rankings.sort(key = lambda x: (-x[0],x[1]))
-    # rankings = [(rank[0], idx_to_trail_name[rank[1]])for rank in rankings]
-
-    ans = {}
+    rankings = {}
     for i in nums:
-        ans[idx_to_trail_name[i]] = nums[i]/(q_norm * doc_norms[i])
-    return ans
+        rankings[idx_to_trail_name[i]] = nums[i]/(q_norm * doc_norms[i])
+    return rankings
 
 def tokenize_string(s):
     """
