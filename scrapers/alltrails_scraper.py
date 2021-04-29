@@ -217,7 +217,7 @@ def retrieve_attributes_by_trail_id(trail_id):
     for d in data:
         attribute = {}
         attribute['features'] = None if d['features'] is None else d['features']['name']
-        attribute['obstacles'] = [o['uid']] for o in d['obstacles']
+        attribute['obstacles'] = [o['uid'] for o in d['obstacles']]
         attributes.append(attribute)
     
     return attributes
