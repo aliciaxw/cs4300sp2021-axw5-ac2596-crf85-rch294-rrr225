@@ -94,6 +94,7 @@
 
 .toggle{
     align-items: start;
+    width: fit-content;
 }
 
 #toggles {

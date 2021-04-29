@@ -2,6 +2,7 @@ from app.irsystem.models.tokens import Tokens
 from app.irsystem.models.get_data import data, NUM_DOCS
 from collections import Counter
 import math
+import numpy as np
 
 class InvertedIndex:
     """
@@ -29,6 +30,7 @@ class InvertedIndex:
     """
     inv_idx = {}
     _vector_type = ''
+    idfs = {}
     # token_type can be {'reviews and descriptions', 'reviews', 'attributes', 'descriptions'}
     def __init__(self, token_type='reviews and descriptions', vector_type = 'tf',min_df = 15, max_df_ratio= 0.9):
         assert token_type in ['reviews and descriptions', 
@@ -66,6 +68,8 @@ class InvertedIndex:
             inv_idx = inv_idx_tfidf
 
         self.inv_idx = inv_idx
+        self.get_idfs()
+        self.get_doc_norms()
     
     def get_idfs(self, min_df = 10, max_df_ratio= 0.9):
         assert self._vector_type in ['tf', 'tfidf']
@@ -74,7 +78,22 @@ class InvertedIndex:
             n_docs_t = len(self.inv_idx[token])
             if n_docs_t >= min_df and (n_docs_t/NUM_DOCS) <= max_df_ratio:
                 idfs[token] = math.log(NUM_DOCS/(1 + n_docs_t), 2)
-        return idfs
+        self.idfs = idfs
+
+    def get_doc_norms(self):
+        sums = {}
+        for tok in self.inv_idx:
+            if tok in self.idfs:
+                for post in self.inv_idx[tok]:
+                    val = sums.get(post[0], 0)
+                    val += (post[1] * self.idfs[tok]) ** 2
+                    sums[post[0]] = val
+                
+        ans = np.zeros(NUM_DOCS)
+        for i in range(NUM_DOCS):
+            if i not in sums: ans[i] = 0
+            else: ans[i] = math.sqrt(sums[i])
+        self.doc_norms = ans
 
     
 ## TEST CODE

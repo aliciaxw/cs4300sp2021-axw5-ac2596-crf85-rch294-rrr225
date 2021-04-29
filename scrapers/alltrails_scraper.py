@@ -4,7 +4,7 @@ import pprint
 import requests
 import time
 
-# from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup
 # from selenium import webdriver
 # from selenium.webdriver.common.keys import Keys
 
@@ -187,8 +187,57 @@ NAME_TO_ID = {
     'Yellow Barn State Forest': None,
 }
 
+"""
+Dictionary mapping AllTrails trail ids to Ithaca Trails trail names.
+"""
+ID_TO_NAME = {value : key for (key, value) in NAME_TO_ID.items()}
+
 # Potentially useful API routes:
 # https://www.alltrails.com/api/alltrails/trails/10354904/nearby_trails?page=1&per_page=24
+
+def retrieve_attributes_by_trail_id(trail_id):
+    """
+    Grabs attributes information through direct call to AllTrail's API.
+    """
+    API_KEY = os.environ.get('ALLTRAILS_API_KEY')
+    ATTRIBUTES_URL = f"https://www.alltrails.com/api/alltrails/trails/{str(trail_id)}"
+    HEADERS = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
+    }
+    URL = ATTRIBUTES_URL + "?key=" + API_KEY
+    attributes = []
+
+    request = requests.get(URL, headers=HEADERS)
+    res = request.json()
+
+    data = res.get('trails')
+    if data is None:
+        return None
+
+    for d in data:
+        attribute = {}
+        attribute['features'] = None if d['features'] is None else d['features']['name']
+        attribute['obstacles'] = [o['uid']] for o in d['obstacles']
+        attributes.append(attribute)
+    
+    return attributes
+
+def append_attributes_to_json(attributes_dict):
+    # given dictionary { trail_id : [attributes]}
+    # concat this list [attributes] to ithacatrails.json's "Trail Attributes"
+    """
+    Given a list of AllTrails trail ids, will append attributes to existing JSON for each trail_id "Trail Attributes"
+    """
+    f = open("ithacatrails.json")
+    json = f.read()
+    for trail_id in trail_ids:
+        attributes = retrieve_attributes_by_trail_id(trail_id)
+        name = ID_TO_NAME[trail_id]
+        if attributes is None:
+            continue
+        json[name]['Trail Attributes'].append(attributes)
+    
+    f.close()
 
 
 def retrieve_review_data_by_trail_id(trail_id):
@@ -239,9 +288,9 @@ def reviews_to_json(trail_ids, output_file):
         json.dump(out, f)
 
 
-if __name__ == "__main__":
-    trail_ids = set(NAME_TO_ID.values())
-    reviews_to_json(trail_ids, "alltrails_reviews.json")
+# if __name__ == "__main__":
+    # trail_ids = set(NAME_TO_ID.values())
+    # reviews_to_json(trail_ids, "alltrails_reviews.json")
 
 ############ WEB SCRAPING TOOLS ############
 

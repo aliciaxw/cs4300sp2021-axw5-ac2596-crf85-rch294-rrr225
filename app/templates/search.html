@@ -46,7 +46,7 @@
                 <input type="checkbox" id="accessible" name="requireAccessible" />
                 <label for="accessible"></label>
 
-                <input type="checkbox" id="freeentry" name="requireFreeentry" />
+                <input type="checkbox" id="freeentry" name="requireFreeEntry" />
                 <label for="freeentry"></label>
 
                 <input type="checkbox" id="parking" name="requireParking" />
@@ -58,21 +58,21 @@
         <div id="activity-toggle" class="col">
           <h4>ACTIVITY TYPE</h4>
           <div class="toggle">
-            <input type="checkbox" id="walk" name="requireWalk" />
+            <input type="checkbox" id="walk" name="walkOn" />
             <label for="walk"></label>
-            <input type="checkbox" id="hike" name="requireHike" />
+            <input type="checkbox" id="hike" name="hikeOn" />
             <label for="hike"></label>
-            <input type="checkbox" id="run" name="requireRun" />
+            <input type="checkbox" id="run" name="runOn" />
             <label for="run"></label>
-            <input type="checkbox" id="bike" name="requireBike" />
+            <input type="checkbox" id="bike" name="bikeOn" />
             <label for="bike"></label>
-            <input type="checkbox" id="horse" name="requireHorse" />
+            <input type="checkbox" id="horse" name="horseOn" />
             <label for="horse"></label>
-            <input type="checkbox" id="swim" name="requireSwim" />
+            <input type="checkbox" id="swim" name="swimOn" />
             <label for="swim"></label>
-            <input type="checkbox" id="ski" name="requireSki" />
+            <input type="checkbox" id="ski" name="skiOn" />
             <label for="ski"></label>
-            <input type="checkbox" id="snowshoe" name="requireSnowshoe" />
+            <input type="checkbox" id="snowshoe" name="snowshoeOn" />
             <label for="snowshoe"></label>
           </div>
         </div>
@@ -83,7 +83,7 @@
             <p> 0 mi</p>
             <p> 20 mi</p>
           </div>
-          <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+          <input type="range" name="setDistance" min="1" max="20" value="10" class="slider" id="setDistance">
         </div>
 
         <button type="submit" class="btn btn-info"> Find my next hike! </button>
@@ -120,10 +120,6 @@
                 {% endfor %}
               </div>
             </div>
-
-
-            <!-- <p>{{d.description}}</p> -->
-
           </div>
         </div>
     </a>
