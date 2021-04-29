@@ -7,10 +7,10 @@ import pprint
 """
 Notes:
     Problem 1:
-        Trails which do not have the - might be unevenly calculated.
+        Trails which do not have the "-" might be unevenly calculated.
     
     Problem 2:
-        How to differentiate between sub-trails.
+        How to differentiate between sub-trails. Still penalizes longer strings.
 """
 
 
