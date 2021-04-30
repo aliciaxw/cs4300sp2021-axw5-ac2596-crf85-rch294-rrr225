@@ -30,4 +30,4 @@ trail_names = [trail for trail in data]
 
 distance_list = get_distance_list()
 
-print(max(distance_list, key = lambda x: x[1]))
+# print(max(distance_list, key = lambda x: x[1]))
