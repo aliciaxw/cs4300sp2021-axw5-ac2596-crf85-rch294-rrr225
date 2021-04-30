@@ -371,17 +371,17 @@ input[type=checkbox][id=freeentry]:checked + label {
     padding: 0 0 0 0px;
 }
 
-/* parking */
-input[type=checkbox][id=parking] + label {
-    background-image: url(parking-inactive.svg);
+/* bathroom */
+input[type=checkbox][id=bathroom] + label {
+    background-image: url(bathroom-inactive.svg);
     height: 45px;
     width: 35px;
     display:inline-block;
     padding: 0 0 0 0px;
 }
 
-input[type=checkbox][id=parking]:checked + label {
-    background-image: url(parking-active.svg);
+input[type=checkbox][id=bathroom]:checked + label {
+    background-image: url(bathroom-active.svg);
     height: 45px;
     width: 35px;
     display:inline-block;

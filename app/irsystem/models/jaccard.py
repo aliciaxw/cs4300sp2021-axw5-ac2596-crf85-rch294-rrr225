@@ -47,7 +47,7 @@ def query_to_jaccard_scores(query_dict, doc_toks):
 
         if attr == 'requireFreeEntry':
             query_toks.append("No fee")
-        if attr == 'requireRestrooms':
+        if attr == 'requireRestroom':
             query_toks.append("Restrooms available")
 
         if attr == 'walkOn':

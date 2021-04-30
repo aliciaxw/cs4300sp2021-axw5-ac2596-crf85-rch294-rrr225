@@ -15,13 +15,11 @@ empty_query = {'search': ''}
 @irsystem.route('/', methods=['GET'])
 def search():
 	# Retrieve values from search query
-	print(request.args.to_dict())
 	query = request.args.to_dict()
 
 	if query == empty_query or query == {}:
 		data = []
 		output_message = ''
-		print('empty')
 	else:
 		# Modify query to include toggle information
 		# TODO Change how we process toggles
