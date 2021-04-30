@@ -5,8 +5,14 @@ def get_filter_score(query, trail):
     """
     return 1 if (query == 0 and trail == 0) or (query == 1 and trail == 1) else 0
 
-def get_filter_scores(query):
+def get_accessibility_ranking(query, data):
     """
     Given a query, returns a dictionary of trail_name to accessibility filter scores.
     """
-    pass
+    out = {}
+    for trail_name in data.keys():
+        requireAccessible = int("requireAccessible" in query.keys())
+        isTrailAccessible = int("Wheelchair friendly" in data[trail_name]['Trail Attributes'])
+        out[trail_name] = get_filter_score(requireAccessible, isTrailAccessible)
+    
+    return out
