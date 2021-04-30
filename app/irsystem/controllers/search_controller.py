@@ -10,46 +10,33 @@ net_id = "Ryan Richardson (rrr225) " + \
 		 "Alicia Chen (ac2596) " + \
 		 "Cesar Ferreyra-Mansilla (crf85) " + \
 		 "Renee Hoh (rch294)"
+empty_query = {'search': ''}
 
 @irsystem.route('/', methods=['GET'])
 def search():
 	# Retrieve values from search query
-	query = request.args.get('search')
-	difficulty = request.args.get('difficulty')
+	print(request.args.to_dict())
+	query = request.args.to_dict()
 
-	require_accessible = request.args.get("requireAccessible")
-	require_free_entry = request.args.get("requireFreeEntry")
-	require_parking = request.args.get("requireParking")
-
-	walk_on = request.args.get("walkOn")
-	hike_on = request.args.get("hikeOn")
-	run_on = request.args.get("runOn")
-	bike_on = request.args.get("bikeOn")
-	horse_on = request.args.get("horseOn")
-	swim_on = request.args.get("swimOn")
-	ski_on = request.args.get("skiOn")
-	snowshoe_on = request.args.get("snowshoeOn")
-
-	distance = request.args.get("setDistance")
-
-	if not query:
+	if query == empty_query or query == {}:
 		data = []
 		output_message = ''
+		print('empty')
 	else:
 		# Modify query to include toggle information
 		# TODO Change how we process toggles
-		if require_accessible:
-			query += ' accessible'
-		if require_free_entry:
-			query += ' free'
-		if require_parking:
-			query += ' parking'
+		# if require_accessible:
+		# 	query += ' accessible'
+		# if require_free_entry:
+		# 	query += ' free'
+		# if require_parking:
+		# 	query += ' parking'
 
 		# Retrieve rankings in the form of (sim_score, trail_name)
 		rankings = get_rankings_by_query(query)
 		# Convert rankings into displayable results
 		results = [Result(ranking) for ranking in rankings]
-		output_message = '🥾 ' + query + ' 🥾'
+		output_message = '🥾 ' + query['search'] + ' 🥾'
 		data = results
 
 	# Render new outputs

@@ -13,6 +13,10 @@ def get_trail_to_idx():
 def get_idx_to_trail_name(trail_to_idx_dict):
     return {value:key for key, value in trail_to_idx_dict.items()}
 
+def get_distance_list():
+    return sorted([(name, data[name]['Distance']) for name in data], key = lambda x: x[1])
+
+
 NUM_DOCS = len(data)
 
 # trail to index
@@ -23,3 +27,7 @@ idx_to_trail_name = get_idx_to_trail_name(trail_to_idx)
 
 # List of trail names
 trail_names = [trail for trail in data]
+
+distance_list = get_distance_list()
+
+print(max(distance_list, key = lambda x: x[1]))
