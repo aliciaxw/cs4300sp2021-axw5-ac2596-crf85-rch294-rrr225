@@ -3,6 +3,7 @@ from app.irsystem.models.cosine import get_cosine_similarity_ranking
 from app.irsystem.models.get_data import trail_names
 from app.irsystem.models.levenshtein import ranked_levs
 from app.irsystem.models.l2distance import get_l2_distance
+from app.irsystem.models.accessibility import get_accessibility_ranking
 import math
 
 def get_rankings_by_query(query, a=0.5, b=0.3, c=0.2, d=0.1):
@@ -22,22 +23,22 @@ def get_rankings_by_query(query, a=0.5, b=0.3, c=0.2, d=0.1):
     sim_reviews = get_cosine_similarity_ranking(query['search'], 'reviews')
     sim_titles = ranked_levs(query['search'], trail_names)
     sim_distance = get_l2_distance(query['setDistance'])
-    # sim_distance = get_l2_distance(1)
+    sim_accessibility = get_accessibility_ranking('requireAccessible' in query)
 
     # TODO
-    # strict filter scores
     # jaccard scores
 
     final_sim = {}
     for name in trail_names:
-        final_sim[name] = a * sim_descriptions.get(name, 0) + \
+        final_sim[name] = sim_accessibility.get(name, 0) * ( \
+        a * sim_descriptions.get(name, 0) + \
         b * sim_reviews.get(name, 0) + \
         c * sim_titles.get(name, 0) + \
         d * sim_distance.get(name, 0)
-    
-    rankings = [(final_sim[name], name) for name in final_sim]
+        )
+
+    rankings = [(final_sim[name], name) for name in final_sim if final_sim[name] > 0]
     rankings.sort(key = lambda x: (-x[0],x[1]))
     rankings = rankings[:3]
-
     print(rankings)
     return rankings

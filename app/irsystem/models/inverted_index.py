@@ -68,8 +68,9 @@ class InvertedIndex:
             inv_idx = inv_idx_tfidf
 
         self.inv_idx = inv_idx
-        self.get_idfs()
-        self.get_doc_norms()
+        if vector_type != 'binary':
+            self.get_idfs()
+            self.get_doc_norms()
     
     def get_idfs(self, min_df = 10, max_df_ratio= 0.9):
         assert self._vector_type in ['tf', 'tfidf']

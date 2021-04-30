@@ -29,5 +29,3 @@ idx_to_trail_name = get_idx_to_trail_name(trail_to_idx)
 trail_names = [trail for trail in data]
 
 distance_list = get_distance_list()
-
-print(max(distance_list, key = lambda x: x[1]))
