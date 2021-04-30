@@ -96,10 +96,31 @@ def names_with_both_ids():
     for name in names_ithaca_id:
         if NAME_TO_ID[name] != None:
             names_with_ids[name] = {'ithaca': names_ithaca_id[name],
-                                'alltrails': NAME_TO_ID[name]}
+                                    'alltrails': NAME_TO_ID[name]}
     return names_with_ids
 
-scrape_all_trails()
+def get_image_id(trail_id):
+    trail_url = START_URL + str(trail_id)
+    r = requests.get(trail_url)
+    soup = BeautifulSoup(r.content, "html5lib")
+    section = soup.find(True, {"class": "one-third column"})
+    # description_link = section.find(text = 'Part of the ').findNext('a').get('href')
+    image_id = section.findNext('a').get('href')
+    image_id = '%20'.join(image_id[:-1].split(' '))
+    print(image_id)
+    return image_id
+
+def scrape_pictures_from_trails():
+    with open('ithacatrails.json') as json_file:
+        ithacatrails = json.load(json_file)
+        for name in ithacatrails:
+            ithacatrails[name]['image id'] = get_image_id(ithacatrails[name]['Ithacatrails ID'])
+        print(ithacatrails["Ellis Hollow Yellow trail"])
+        with open('ithacatrails.json', 'w') as fout:
+            json.dump(ithacatrails, fout, indent=4)
+# get_image_id('1000')
+scrape_pictures_from_trails()
+# scrape_all_trails()
 # print(names_with_both_ids())
 
 # print(len(NAMES_WITH_BOTH_ID))
