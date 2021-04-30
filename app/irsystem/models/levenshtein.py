@@ -39,7 +39,7 @@ def substitute_cost(target, source, i, j):
     if target[i - 1] == source[j - 1]:
         return 0
     else:
-        return 6
+        return 2
 
 
 # Setting custom operation costs
@@ -95,10 +95,6 @@ def ranked_levs(target, sources):
     Returns a dictionary {trail_name: score} of the
     [sources] as calculated by the levenshtein() function above.
 
-    Scores are made negative for the purpose of calculating the final similarity score
-    later on. The smaller our edit distance, the larger our final score when adding the
-    edit distance score in.
-
     Note:
     Because there are often multiple trails with the same park name,
     and the Levenshtein edit-distance penalizes strings longer than
@@ -112,7 +108,8 @@ def ranked_levs(target, sources):
     for trail in sources:
         source = trail
         edit_cost = levenshtein(target, source.split(' - ', 1)[0])
-        edit_distance_rankings[source] = -edit_cost
+        edit_cost = 1 if edit_cost == 0 else edit_cost  # avoid divide by zero
+        edit_distance_rankings[source] = 1 / edit_cost
 
     return edit_distance_rankings
 
