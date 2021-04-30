@@ -42,6 +42,8 @@ class Result:
             if review['comment'] != "":
                 self.reviews.append(review["comment"])
         self.review = self.reviews[random.randint(0, len(self.reviews)-1)]
+        self.img = ith_trails['image id']
+        print(self.img)
         self.url = "https://ithacatrails.org/trail/" + str(ith_trails["Ithacatrails ID"])
         # self.accessibility_types = kwargs.get('accessibility_types')
 
