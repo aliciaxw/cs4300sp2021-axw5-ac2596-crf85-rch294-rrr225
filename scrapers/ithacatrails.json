@@ -18,7 +18,8 @@
             "Good for Hiking",
             "Good for Running",
             "Good for Cross-Country Skiiing",
-            "Good for Snowshoeing"
+            "Good for Snowshoeing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -330,7 +331,8 @@
         "Trail Attributes": [
             "Good for Hiking",
             "Good for Running",
-            "Good for Snowshoeing"
+            "Good for Snowshoeing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -642,7 +644,8 @@
         "Trail Attributes": [
             "Good for Hiking",
             "Good for Running",
-            "Good for Snowshoeing"
+            "Good for Snowshoeing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -954,7 +957,8 @@
         "Trail Attributes": [
             "Good for Hiking",
             "Good for Running",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -1059,7 +1063,8 @@
             "Good for Running",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -1449,7 +1454,8 @@
             "Good for Running",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -1839,7 +1845,8 @@
             "Good for Running",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -2229,7 +2236,8 @@
             "Good for Running",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -2619,7 +2627,8 @@
             "Good for Running",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -3011,7 +3020,8 @@
             "Good for Snowshoeing",
             "Lakes visible",
             "Scenic Vistas",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -3258,7 +3268,8 @@
             "Good for Snowshoeing",
             "Lakes visible",
             "Scenic Vistas",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -3505,7 +3516,8 @@
             "Good for Snowshoeing",
             "Lakes visible",
             "Scenic Vistas",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -3749,7 +3761,8 @@
             "Good for Hiking",
             "Good for Running",
             "Good for Snowshoeing",
-            "Scenic Vistas"
+            "Scenic Vistas",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -3913,7 +3926,8 @@
         "Trail Attributes": [
             "Good for Hiking",
             "Good for Running",
-            "Scenic Vistas"
+            "Scenic Vistas",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -4078,7 +4092,8 @@
             "Good for Hiking",
             "Good for Running",
             "Good for Snowshoeing",
-            "Scenic Vistas"
+            "Scenic Vistas",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -4113,12 +4128,6 @@
                 "comment": "",
                 "obstacles": [],
                 "rating": 5
-            },
-            {
-                "activity": "Hiking",
-                "comment": "",
-                "obstacles": [],
-                "rating": null
             },
             {
                 "activity": "Hiking",
@@ -4244,7 +4253,8 @@
             "Good for Running",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -4360,7 +4370,8 @@
             "Scenic Vistas",
             "Unique Wildlife Viewing",
             "Picnicking allowed",
-            "Restrooms available"
+            "Restrooms available",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -5086,7 +5097,8 @@
             "Good for Snowshoeing",
             "Lakes visible",
             "Scenic Vistas",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -5505,7 +5517,8 @@
             "Good for Snowshoeing",
             "Lakes visible",
             "Scenic Vistas",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -5924,7 +5937,8 @@
             "Good for Snowshoeing",
             "Lakes visible",
             "Scenic Vistas",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -6342,7 +6356,8 @@
             "Good for Hiking",
             "Good for Snowshoeing",
             "Scenic Vistas",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -8247,7 +8262,8 @@
         },
         "Trail Attributes": [
             "Good for Hiking",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -8478,7 +8494,8 @@
         },
         "Trail Attributes": [
             "Good for Hiking",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -8709,7 +8726,8 @@
         },
         "Trail Attributes": [
             "Good for Hiking",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -8940,7 +8958,8 @@
         },
         "Trail Attributes": [
             "Good for Hiking",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -9171,7 +9190,8 @@
         },
         "Trail Attributes": [
             "Good for Hiking",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -9403,7 +9423,8 @@
         "Trail Attributes": [
             "Good for Hiking",
             "Scenic Vistas",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -9635,7 +9656,8 @@
         "Trail Attributes": [
             "Good for Hiking",
             "Scenic Vistas",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -9866,7 +9888,8 @@
         "Trail Attributes": [
             "Good for Hiking",
             "Scenic Vistas",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -10097,7 +10120,8 @@
         "Trail Attributes": [
             "Good for Hiking",
             "Scenic Vistas",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -10330,7 +10354,8 @@
             "Good for Hiking",
             "Good for Snowshoeing",
             "Scenic Vistas",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -10644,7 +10669,8 @@
             "Good for Running",
             "Good for Snowshoeing",
             "Scenic Vistas",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -11488,7 +11514,8 @@
         "Trail Attributes": [
             "Good for Hiking",
             "Scenic Vistas",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -11720,7 +11747,8 @@
         "Trail Attributes": [
             "Good for Hiking",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -11822,7 +11850,8 @@
             "Good for Running",
             "Good for Snowshoeing",
             "Scenic Vistas",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -12666,7 +12695,8 @@
         "Trail Attributes": [
             "Good for Hiking",
             "Scenic Vistas",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -12898,7 +12928,8 @@
         "Trail Attributes": [
             "Good for Hiking",
             "Scenic Vistas",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -13130,7 +13161,8 @@
         "Trail Attributes": [
             "Good for Hiking",
             "Scenic Vistas",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -13367,7 +13399,8 @@
             "Scenic Vistas",
             "Unique Wildlife Viewing",
             "Picnicking allowed",
-            "Restrooms available"
+            "Restrooms available",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -15931,7 +15964,8 @@
             "Scenic Vistas",
             "Unique Wildlife Viewing",
             "Picnicking allowed",
-            "Restrooms available"
+            "Restrooms available",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -19235,7 +19269,9 @@
             "Scenic Vistas",
             "Unique Wildlife Viewing",
             "Picnicking allowed",
-            "Restrooms available"
+            "Restrooms available",
+            "No fee",
+            "Wheelchair friendly"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -25880,7 +25916,8 @@
             "Scenic Vistas",
             "Unique Wildlife Viewing",
             "Picnicking allowed",
-            "Restrooms available"
+            "Restrooms available",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -28443,7 +28480,8 @@
             "Scenic Vistas",
             "Unique Wildlife Viewing",
             "Picnicking allowed",
-            "Restrooms available"
+            "Restrooms available",
+            "Fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -33840,7 +33878,8 @@
             "Scenic Vistas",
             "Unique Wildlife Viewing",
             "Picnicking allowed",
-            "Restrooms available"
+            "Restrooms available",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -40647,7 +40686,9 @@
             "Scenic Vistas",
             "Unique Wildlife Viewing",
             "Picnicking allowed",
-            "Restrooms available"
+            "Restrooms available",
+            "No fee",
+            "Wheelchair friendly"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -41834,7 +41875,8 @@
             "Scenic Vistas",
             "Unique Wildlife Viewing",
             "Picnicking allowed",
-            "Restrooms available"
+            "Restrooms available",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -42208,7 +42250,8 @@
             "Scenic Vistas",
             "Unique Wildlife Viewing",
             "Picnicking allowed",
-            "Restrooms available"
+            "Restrooms available",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -49017,7 +49060,8 @@
             "Scenic Vistas",
             "Unique Wildlife Viewing",
             "Picnicking allowed",
-            "Restrooms available"
+            "Restrooms available",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -55826,7 +55870,8 @@
             "Scenic Vistas",
             "Unique Wildlife Viewing",
             "Picnicking allowed",
-            "Restrooms available"
+            "Restrooms available",
+            "Fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -61222,7 +61267,8 @@
             "Good for Hiking",
             "Good for Running",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -61344,7 +61390,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -61681,7 +61728,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -62018,7 +62066,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -62355,7 +62404,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -62692,7 +62742,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -63029,7 +63080,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -63366,7 +63418,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -63703,7 +63756,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -64040,7 +64094,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -64377,7 +64432,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -64714,7 +64770,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -65051,7 +65108,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -65388,7 +65446,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -65725,7 +65784,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -66062,7 +66122,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -66399,7 +66460,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -66734,7 +66796,8 @@
             "Good for Running",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -67199,7 +67262,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -68059,7 +68123,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -68919,7 +68984,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -69779,7 +69845,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -70639,7 +70706,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -71499,7 +71567,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -72359,7 +72428,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -73219,7 +73289,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -74079,7 +74150,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -74939,7 +75011,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -75799,7 +75872,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -76659,7 +76733,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -77519,7 +77594,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -78379,7 +78455,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -79239,7 +79316,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -80099,7 +80177,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -80959,7 +81038,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -81819,7 +81899,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -82679,7 +82760,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -83539,7 +83621,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -84399,7 +84482,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -85259,7 +85343,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -86119,7 +86204,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -86979,7 +87065,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -87839,7 +87926,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -88699,7 +88787,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -89559,7 +89648,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -90418,7 +90508,8 @@
             "Good for Running",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -91278,7 +91369,8 @@
             "Good for Mountain Biking",
             "Good for Cross-Country Skiiing",
             "Good for Snowshoeing",
-            "Unique Wildlife Viewing"
+            "Unique Wildlife Viewing",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -92136,7 +92228,8 @@
             "Good for Hiking",
             "Good for Running",
             "Unique Wildlife Viewing",
-            "Picnicking allowed"
+            "Picnicking allowed",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -93330,7 +93423,8 @@
             "Lakes visible",
             "Unique Wildlife Viewing",
             "Picnicking allowed",
-            "Restrooms available"
+            "Restrooms available",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -93661,7 +93755,8 @@
         },
         "Trail Attributes": [
             "Unique Wildlife Viewing",
-            "Picnicking allowed"
+            "Picnicking allowed",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
@@ -95262,7 +95357,8 @@
             "Scenic Vistas",
             "Unique Wildlife Viewing",
             "Picnicking allowed",
-            "Restrooms available"
+            "Restrooms available",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -95578,7 +95674,8 @@
             "Scenic Vistas",
             "Unique Wildlife Viewing",
             "Picnicking allowed",
-            "Restrooms available"
+            "Restrooms available",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: Yes",
@@ -95911,7 +96008,8 @@
             "Good for Biking",
             "Good for Hiking",
             "Good for Running",
-            "Scenic Vistas"
+            "Scenic Vistas",
+            "No fee"
         ],
         "More Info": [
             "Part of interconnected trail system: No",
