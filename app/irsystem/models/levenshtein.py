@@ -16,24 +16,25 @@ Notes:
 
 def insert_cost(source, j):
     """
-    Returns the current insertion cost of inserting the [j]-th character of the
-    source word.
+    Returns the current insertion cost of inserting 
+    the character at index [j] in the [source] string.
     """
     return 1
 
 
 def delete_cost(target, i):
     """
-    Returns the current deletion cost of deleting the [i]-th character of the
-    [target] word.
+    Returns the current deletion cost of deleting
+    the character at index [i] of the [target] string.
     """
     return 1
 
 
 def substitute_cost(target, source, i, j):
     """
-    Returns the current substitution cost of substituting the [i]-th character
-    of the [target] word with the [j]-th character of the [source] word.
+    Returns the current substitution cost of substituting 
+    the character at index [i - 1] in the [target] string with 
+    the character at index [j - 1] in the [source] string.
     """
     if target[i - 1] == source[j - 1]:
         return 0
@@ -49,9 +50,9 @@ curr_substitute_function = substitute_cost
 
 def lev_mat(target, source):
     """
-    Calculates the edit-distance matrix where the cell [i, j] corresponds to
-    the edit-cost (under) custom parameters) of transforming the first i letters
-    of the target to the first j letters of the source.
+    Calculates an edit-distance matrix where the cell [i, j] corresponds to
+    the Levenshtein edit-cost (under custom parameters) of transforming 
+    the first [i] letters of the [target] to the first [j] letters of [source].
 
     * As calculated in A3 *
     """
@@ -82,8 +83,8 @@ def lev_mat(target, source):
 
 def levenshtein(target, source):
     """
-    Calculates the levenshtein ditance between the source string and target
-    string.
+    Calculates the levenshtein distance between the [source] string 
+    and [target] string.
     """
     m = lev_mat(target, source)
     return m[len(target), len(source)]
