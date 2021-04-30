@@ -49,7 +49,7 @@ class Result:
         
 # Test Code
 # ---------
-rslt = Result((.25, "Ellis Hollow Yellow trail"))
+# rslt = Result((.25, "Ellis Hollow Yellow trail"))
 # print(rslt.name)
 # print(rslt.difficulty)
 # print(rslt.gps)
@@ -57,8 +57,8 @@ rslt = Result((.25, "Ellis Hollow Yellow trail"))
 # print(rslt.description)
 # print(rslt.activity_types)
 # print(rslt.reviews)
-print(rslt.attributes)
-print(rslt.activity_types)
+# print(rslt.attributes)
+# print(rslt.activity_types)
 
 
 

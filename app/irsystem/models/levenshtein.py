@@ -1,6 +1,6 @@
 import sys
 import numpy as np
-from get_data import data
+# from get_data import datas
 import pprint
 
 
@@ -19,7 +19,8 @@ def insert_cost(source, j):
     Returns the current insertion cost of inserting the [j]-th character of the
     source word.
     """
-    return 1
+    # does not penalize for the word appearing in the middle of the query
+    return 0
 
 
 def delete_cost(target, i):
@@ -27,7 +28,7 @@ def delete_cost(target, i):
     Returns the current deletion cost of deleting the [i]-th character of the
     [target] word.
     """
-    return 1
+    return 2
 
 
 def substitute_cost(target, source, i, j):
@@ -38,7 +39,7 @@ def substitute_cost(target, source, i, j):
     if target[i - 1] == source[j - 1]:
         return 0
     else:
-        return 2
+        return 6
 
 
 # Setting custom operation costs
@@ -91,8 +92,12 @@ def levenshtein(target, source):
 
 def ranked_levs(target, sources):
     """
-    Returns a list of tuples representing the [(score, source)] of the
+    Returns a dictionary {trail_name: score} of the
     [sources] as calculated by the levenshtein() function above.
+
+    Scores are made negative for the purpose of calculating the final similarity score
+    later on. The smaller our edit distance, the larger our final score when adding the
+    edit distance score in.
 
     Note:
     Because there are often multiple trails with the same park name,
@@ -102,15 +107,14 @@ def ranked_levs(target, sources):
         Edwards Lake Cliiffs Trail - Pocket Falls
             --> Edwards Lake Cliiffs Trail
     """
-    edit_distance_rankings = []
+    edit_distance_rankings = {}
 
     for trail in sources:
         source = trail
         edit_cost = levenshtein(target, source.split(' - ', 1)[0])
-        edit_distance_rankings.append((edit_cost, source))
+        edit_distance_rankings[source] = -edit_cost
 
-    return sorted(edit_distance_rankings, key=lambda tup: tup[0])
-
+    return edit_distance_rankings
 
 # Code for testing:
 

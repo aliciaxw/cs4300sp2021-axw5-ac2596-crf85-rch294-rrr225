@@ -2,36 +2,53 @@ from collections import Counter
 import numpy as np
 from nltk.tokenize import TreebankWordTokenizer
 from app.irsystem.models.inverted_index import InvertedIndex
-from app.irsystem.models.get_data import idx_to_trail_name, NUM_DOCS
+from app.irsystem.models.get_data import idx_to_trail_name, NUM_DOCS, trail_names
+from app.irsystem.models.levenshtein import ranked_levs
 import math
 
-def get_rankings_by_query(query, alpha=0.7, beta=0.3):
+# initialize inverted index of descriptions/reviews for effiency
+trails_tfidf_obj_desc = InvertedIndex(token_type="descriptions", vector_type='tf')
+trails_tfidf_obj_reviews = InvertedIndex(token_type="reviews", vector_type='tf')
+
+
+def get_rankings_by_query(query, a=0.5, b=0.3, c=0.2):
     """
     Returns a list of the top 3 rankings in the form (similarity_score, trail_name) given a query string.
     This serves as the main function that is called when a new query is made.
-    alpha -> weight for descriptions similarity
-    beta -> weight for reviews similarity
+
+    a -> weight for descriptions similarity
+    b -> weight for reviews similarity
+    c -> weight for title similarity
     """
     sim_descriptions = get_cosine_similarity_ranking(query, 'descriptions')
     sim_reviews = get_cosine_similarity_ranking(query, 'reviews')
-    
-    # 70 description and 30 reviews
+    sim_titles = ranked_levs(query, trail_names)
+
+    # TODO
+    # strict filter scores
+    # jaccard scores
+
     final_sim = {}
-    for name in sim_descriptions:
-        final_sim[name] = alpha * sim_descriptions.get(name, 0) + \
-        beta * sim_reviews.get(name, 0)
+    for name in trail_names:
+        final_sim[name] = a * sim_descriptions.get(name, 0) + \
+        b * sim_reviews.get(name, 0) + \
+        c * sim_titles.get(name, 0)
     
     rankings = [(final_sim[name], name) for name in final_sim]
     rankings.sort(key = lambda x: (-x[0],x[1]))
     rankings = rankings[:3]
+
     print(rankings)
     return rankings
-        
         
 
 def get_cosine_similarity_ranking(query, token_type):
     # Create tfidf matrix object for trail documents with 200 features
-    trails_tfidf_obj = InvertedIndex(token_type=token_type, vector_type='tf')
+    if token_type == 'descriptions':
+        trails_tfidf_obj = trails_tfidf_obj_desc
+    elif token_type == 'reviews':
+        trails_tfidf_obj = trails_tfidf_obj_reviews
+
     inv_idx = trails_tfidf_obj.inv_idx
     idfs= trails_tfidf_obj.idfs
     doc_norms = trails_tfidf_obj.doc_norms
@@ -97,6 +114,7 @@ def cosine_sim_matrix(num_trails, query, tfidf, sim_method = cosine_sim):
     ranked_trails = sorted(trails_sims, key= lambda x: -x[0])
     return ranked_trails
 
+# STRICT FILTERS FOR ACCESSIBILITY
 
 def get_filter_score(query, trail):
     """
@@ -105,3 +123,8 @@ def get_filter_score(query, trail):
     """
     return 1 if (query == 0 and trail == 0) or (query == 1 and trail == 1) else 0
 
+def get_filter_scores(query):
+    """
+    Given a query, returns a dictionary of trail_name to accessibility filter scores.
+    """
+    pass

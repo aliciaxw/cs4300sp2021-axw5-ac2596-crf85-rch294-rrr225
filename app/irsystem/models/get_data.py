@@ -15,5 +15,11 @@ def get_idx_to_trail_name(trail_to_idx_dict):
 
 NUM_DOCS = len(data)
 
+# trail to index
 trail_to_idx = get_trail_to_idx()
+
+# trail index to trail name
 idx_to_trail_name = get_idx_to_trail_name(trail_to_idx)
+
+# List of trail names
+trail_names = [trail for trail in data]
