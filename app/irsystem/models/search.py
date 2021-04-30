@@ -16,7 +16,7 @@ def get_rankings_by_query(query, a=0.5, b=0.3, c=0.2, d=0.1):
     c -> weight for title similarity
     """
     # {'search': 'Easy hiking trail', 'difficulty': 'easy', 'requireAccessible': 'on', 
-    # 'requireFreeEntry': 'on', 'requireParking': 'on', 'walkOn': 'on', 'hikeOn': 'on', 
+    # 'requireFreeEntry': 'on', 'requireBathroom': 'on', 'walkOn': 'on', 'hikeOn': 'on', 
     # 'runOn': 'on', 'bikeOn': 'on', 'horseOn': 'on', 'swimOn': 'on', 'skiOn': 'on', 
     # 'snowshoeOn': 'on', 'setDistance': '5'}
     sim_descriptions = get_cosine_similarity_ranking(query['search'], 'descriptions')
