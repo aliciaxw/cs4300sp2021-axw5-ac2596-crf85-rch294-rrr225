@@ -12,6 +12,13 @@ net_id = "Ryan Richardson (rrr225) " + \
 		 "Renee Hoh (rch294)"
 empty_query = {'search': ''}
 
+# weights to be updated
+a = 0.5
+b = 0.3
+c = 0.2
+d = 0.1
+e = 0.2
+
 @irsystem.route('/', methods=['GET'])
 def search():
 	# Retrieve values from search query
@@ -21,20 +28,11 @@ def search():
 		data = []
 		output_message = ''
 	else:
-		# Modify query to include toggle information
-		# TODO Change how we process toggles
-		# if require_accessible:
-		# 	query += ' accessible'
-		# if require_free_entry:
-		# 	query += ' free'
-		# if require_parking:
-		# 	query += ' parking'
-
 		# Retrieve rankings in the form of (sim_score, trail_name)
 		rankings = get_rankings_by_query(query)
 		# Convert rankings into displayable results
 		results = [Result(ranking) for ranking in rankings]
-		output_message = '🥾 ' + query['search'] + ' 🥾'
+		output_message = f"🥾 your query: {query['search']} 🥾"
 		data = results
 
 	# Render new outputs
