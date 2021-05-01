@@ -83,7 +83,29 @@
             <p> 0 mi</p>
             <p> 5 mi</p>
           </div>
-          <input type="range" name="setDistance" min="0" max="5" value="2" class="slider" id="setDistance">
+          <input 
+            type="range" 
+            name="setDistance" 
+            min="0" 
+            max="5" 
+            value="2" 
+            class="slider" 
+            id="setDistance"
+            oninput='this.nextElementSibling.value = this.value + ` mi`'>
+            <input 
+              id="setDistance_sibling" 
+              type="button" 
+              value="2 mi" 
+              style="
+                color: darkgray;
+                font-size: 12px;
+                width: 20%;
+                margin-left: 40%; 
+                margin-top: 2%;
+                border: none;
+                background-color: transparent;
+              "
+            disabled />
         </div>
 
         <button type="submit" class="btn btn-info"> Find my next hike! </button>
