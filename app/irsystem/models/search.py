@@ -12,7 +12,7 @@ import math
 
 
 
-def get_rankings_by_query(query, a=0.5, b=0.3, c=0.2, d=0.1, e=0.2):
+def get_rankings_by_query(query, weights):
     """
     Returns a list of the top 3 rankings in the form (similarity_score, trail_name) given a query string.
     This serves as the main function that is called when a new query is made.
@@ -36,11 +36,11 @@ def get_rankings_by_query(query, a=0.5, b=0.3, c=0.2, d=0.1, e=0.2):
     for name in trail_names:
         final_sim[name] = {}
         final_sim[name]['final_score'] = sim_accessibility.get(name, 1) * (
-            a * sim_descriptions.get(name, 0) +
-            b * sim_reviews.get(name, 0) +
-            c * sim_titles.get(name, 0) +
-            d * sim_distance.get(name, 0) +
-            e * sim_jaccard.get(name, 0) + 
+            weights['a'] * sim_descriptions.get(name, 0) +
+            weights['b'] * sim_reviews.get(name, 0) +
+            weights['c'] * sim_titles.get(name, 0) +
+            weights['d'] * sim_distance.get(name, 0) +
+            weights['e'] * sim_jaccard.get(name, 0) + 
             sim_accessibility.get(name, 0))
         final_sim[name]['a'] = sim_descriptions.get(name, 0)
         final_sim[name]['b'] = sim_reviews.get(name, 0)
@@ -50,9 +50,7 @@ def get_rankings_by_query(query, a=0.5, b=0.3, c=0.2, d=0.1, e=0.2):
 
     rankings = [(final_sim[name], name) for name in final_sim]
     rankings.sort(key=lambda x: (-x[0]['final_score'], x[1]))
-    
     rankings = rankings[:4]
 
     results = [Result(ranking) for ranking in rankings]
-
     return results
