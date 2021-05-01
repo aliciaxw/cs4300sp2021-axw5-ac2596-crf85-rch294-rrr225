@@ -29,9 +29,7 @@ def search():
 		output_message = ''
 	else:
 		# Retrieve rankings in the form of (sim_score, trail_name)
-		rankings = get_rankings_by_query(query)
-		# Convert rankings into displayable results
-		results = [Result(ranking) for ranking in rankings]
+		results = get_rankings_by_query(query, a, b, c, d, e)
 		output_message = f"🥾 your query: {query['search']} 🥾"
 		data = results
 
