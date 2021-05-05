@@ -17,16 +17,42 @@
         padding-top: 5%;
         padding-bottom: 15px;
         background-color:  #D2E8D9;
+        /* position: fixed; */
+        /* height: 100%; */
         }
  
-        #map {
-         height: 100%;
-         width: 100%;
-         position:absolute;
-         top: 0;
-         left: 0;
-         z-index: 0;
-     }
+    #map {
+        height: 100%;
+        width: 100%;
+        position:absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+    }
+
+    /* .map-wrapper {
+        position: absolute;
+        height:100%;
+    } */
+/* 
+    .wrapper {
+        position: relative;
+    } */
+
+    .content {
+        margin-left: 50px;
+        width: 100%;
+        overflow: auto;
+        /* position: absolute; 
+        top: 10px; 
+        left: 10px; 
+        z-index: 99; */
+    }
+    
+    h3 {
+        margin: 25px;
+        margin-left: 20%;
+    }
  
     #netid {
      font-size: 45%;
@@ -69,19 +95,16 @@
         border: none;
         margin-top: 10px;
     }
-    /* .step-links a{
-        color: #4285F4;
-    } */
  
  .card {
-     margin: auto;
+     /* margin: auto; */
     border-radius: 10px;
     width: 50%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
     transition: 0.3s;
     background-color:white;
     position: relative;
-   z-index: 1; /* The z-index should be higher than Google Maps */
+    z-index: 1; /* The z-index should be higher than Google Maps */
   }
  
   .container {
@@ -134,17 +157,12 @@
      /* width: 80%; */
      display: inline-block;
      color:gray;
-     /* padding: auto; */
      vertical-align: baseline;
-     /* padding: 13px 0px; */
  }
  
   #review {
-      /* font-weight: bold; */
-      /* margin-top:10px; */
       font-size: 90%;
       font-style: italic;
-      /* margin-bottom: 15px; */
   }
  
   #attributes, #activity-type {
@@ -199,8 +217,6 @@
  }
  
  #access-toggle {
-     /* width: 50%; */
-     /* justify-content: flex-end; */
      margin-left: 30px;
  }
  
@@ -441,9 +457,6 @@
      justify-content: space-between;
    }
  
-   .background-img {
-       position: absolute;
-   }
- 
+
  
  
