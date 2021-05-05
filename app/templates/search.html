@@ -3,13 +3,34 @@
 <head>
   <link rel="stylesheet" href="/static/bootstrap.min.css">
   <link rel="stylesheet" href="/static/main.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
 </head>
 
+<script>
+  let map;
+  function initMap() {
+    const myLatLng = { lat: 42.444, lng: -76.501 };
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: {
+        lat: 42.444,
+        lng: -76.501
+      }, zoom: 15
+    });
+    new google.maps.Marker({
+      position: myLatLng,
+      map,
+      title: "Hello World!",
+    });
+  } // initMap(); 
+</script>
+
 <body>
-  <!-- <div class="topcorner">
-    <p>Project Name: {{ name }}</p>
-    <p>Student Name: ({{ netid }})</p>
-  </div> -->
+  <div id="map"></div>
+  <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArkKUMZfAd7LvEhIoHC6Asbhw9wmU3qJ0&callback=initMap&libraries=&v=weekly"
+    async></script>
   <div class="card">
     <div class="container">
       <form class="form-inline global-search">
@@ -124,7 +145,7 @@
             </div>
           </div>
         </div>
-      </a>
+    </a>
     </div>
     {% endfor %}
     {% endif %}

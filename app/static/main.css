@@ -1,435 +1,449 @@
 @media (min-width: 1200px) {
-   .container {
-       max-width: 970px;
-   }
-   }
-   @media (min-width:400px){
-   .global-search {
-       padding: 20px 0;
-       text-align:center;
-   }
-
-   html {
-    scroll-behavior: smooth;
-  }
-  
-   body {
-       padding-top: 5%;
-       padding-bottom: 15px;
-       background-color:  #D2E8D9;
-       }
-
-   #netid {
-    font-size: 45%;
+    .container {
+        max-width: 970px;
     }
-
-   a, a:hover {
-       color: inherit; 
-       text-decoration: none;
+    }
+    @media (min-width:400px){
+    .global-search {
+        padding: 20px 0;
+        text-align:center;
+    }
+ 
+    html {
+     scroll-behavior: smooth;
    }
-
-   h4 {
-       font-size: 80%;
-       text-align: start;
-       margin: 10px 10px 10px 0px;
-   }
-   .global-search {
-       text-align:center;
-       padding:10px;
-   }
-   /* .global-search .form-control {
-       width:200px;
-   } */
-
    
-   .global-search * {
-       display:inline-block;
-       /* margin-bottom:0; */
-   }
-
-   }
-   .topcorner{
-       position:absolute;
-       top:2%;
-       right:2%;
-       text-align: right;
-       width: 300px;
-   }
-   .btn{
-       background-color: forestgreen;
-       border: none;
-       margin-top: 10px;
-   }
-   /* .step-links a{
-       color: #4285F4;
-   } */
-
-.card {
-    margin: auto;
-   border-radius: 10px;
-   width: 50%;
-   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
-   transition: 0.3s;
-   background-color:white;
- }
-
- .container {
-   padding: 10px 60px;
-   width:100%;
- }
-
- .col {
+    body {
+        padding-top: 5%;
+        padding-bottom: 15px;
+        background-color:  #D2E8D9;
+        }
+ 
+        #map {
+         height: 100%;
+         width: 100%;
+         position:absolute;
+         top: 0;
+         left: 0;
+         z-index: 0;
+     }
+ 
+    #netid {
+     font-size: 45%;
+     }
+ 
+    a, a:hover {
+        color: inherit; 
+        text-decoration: none;
+    }
+ 
+    h4 {
+        font-size: 80%;
+        text-align: start;
+        margin: 10px 10px 10px 0px;
+    }
+    .global-search {
+        text-align:center;
+        padding:10px;
+    }
+    /* .global-search .form-control {
+        width:200px;
+    } */
+ 
+    
+    .global-search * {
+        display:inline-block;
+        /* margin-bottom:0; */
+    }
+ 
+    }
+    .topcorner{
+        position:absolute;
+        top:2%;
+        right:2%;
+        text-align: right;
+        width: 300px;
+    }
+    .btn{
+        background-color: forestgreen;
+        border: none;
+        margin-top: 10px;
+    }
+    /* .step-links a{
+        color: #4285F4;
+    } */
+ 
+ .card {
+     margin: auto;
+    border-radius: 10px;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+    transition: 0.3s;
+    background-color:white;
+    position: relative;
+   z-index: 1; /* The z-index should be higher than Google Maps */
+  }
+ 
+  .container {
+    padding: 10px 60px;
+    width:100%;
+  }
+ 
+  .col {
+      display: flex;
+      flex-direction: column;
+  }
+ 
+  .display-row {
      display: flex;
-     flex-direction: column;
+     flex-direction: row;
  }
-
- .display-row {
-    display: flex;
-    flex-direction: row;
-}
-
-#keyword-input, .access-btn {
-    margin: 15px;
-}
-
-.toggle{
-    align-items: start;
-    width: fit-content;
-}
-
-#toggles {
-    margin: 5px 0px 0px 0px;
-}
-
- .result {
-     /* margin-top:10px; */
+ 
+ #keyword-input, .access-btn {
+     margin: 15px;
  }
-
- .result:hover {
-    transform: scale(1.01);
-    /* box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06); */
+ 
+ .toggle{
+     align-items: start;
+     width: fit-content;
  }
-
- #name {
-     width: 80%;
-     margin-top:10px;
-     font-size: 150%;
+ 
+ #toggles {
+     margin: 5px 0px 0px 0px;
+ }
+ 
+  .result {
+     position: relative;
+     z-index: 1; /* The z-index should be higher than Google Maps */
+  }
+ 
+  .result:hover {
+     transform: scale(1.01);
+     /* box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06); */
+  }
+ 
+  #name {
+      width: 80%;
+      margin-top:10px;
+      font-size: 150%;
+      vertical-align: baseline;
+  }
+ 
+ 
+ #length {
+     /* width: 80%; */
+     display: inline-block;
+     color:gray;
+     /* padding: auto; */
      vertical-align: baseline;
+     /* padding: 13px 0px; */
  }
-
-
-#length {
-    /* width: 80%; */
-    display: inline-block;
-    color:gray;
-    /* padding: auto; */
-    vertical-align: baseline;
-    /* padding: 13px 0px; */
-}
-
- #review {
-     /* font-weight: bold; */
-     /* margin-top:10px; */
-     font-size: 90%;
-     font-style: italic;
-     /* margin-bottom: 15px; */
+ 
+  #review {
+      /* font-weight: bold; */
+      /* margin-top:10px; */
+      font-size: 90%;
+      font-style: italic;
+      /* margin-bottom: 15px; */
+  }
+ 
+  #attributes, #activity-type {
+     margin-right: 5px;
+  }
+ 
+  #activity-type {
+      width: 25px;
+      padding: 8px 0px;
+  }
+ 
+ .activity-types {
+     /* width: 80%; */
+     display: flex;
+     justify-self: flex-end;
  }
-
- #attributes, #activity-type {
-    margin-right: 5px;
+ 
+ #difficulty-display, #attribute {
+      border: 1px #6FCF97 solid;
+      border-radius: 50px;
+      color: #6FCF97;
+      font-size: 80%;
+      padding:3 7 3 7;
+      margin-right: 3px;
+      text-align: center;
+      margin-top: 8px;
+      height: 25px;
+  }
+ 
+  #difficulty-display {
+     color: white;
+     background-color: #6FCF97;
  }
-
- #activity-type {
+ 
+  .trail-img { 
+     width: 100%; 
+     height:180px;
+     object-fit:cover;
+      border-radius: 10px 10px 0 0;
+      overflow: hidden;
+      justify-content: flex-end;
+  }
+ 
+  .trail-img img {
+     width: 300px; height:200px;
+     object-fit:cover
+  }
+ 
+ #difficulty-input {
+     width: 200px;
+     margin:0px;
+ }
+ 
+ #access-toggle {
+     /* width: 50%; */
+     /* justify-content: flex-end; */
+     margin-left: 30px;
+ }
+ 
+ 
+ input[type=checkbox] {
+     display:none;
+ }
+ 
+ label {
+     margin-right: 20px;
+ }
+ 
+ /* walk */
+ input[type=checkbox][id=walk] + label {
+     background-image: url(walk-inactive.svg);
+     height: 44px;
+     width: 35px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ input[type=checkbox][id=walk]:checked + label {
+     background-image: url(walk-active.svg);
+     height: 44px;
+     width: 35px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ /* hike */
+ input[type=checkbox][id=hike] + label {
+     background-image: url(hike-inactive.svg);
+     height: 45px;
+     width: 35px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ input[type=checkbox][id=hike]:checked + label {
+     background-image: url(hike-active.svg);
+     height: 45px;
+     width: 35px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ /* run */
+ input[type=checkbox][id=run] + label {
+     background-image: url(run-inactive.svg);
+     height: 45px;
+     width: 35px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ input[type=checkbox][id=run]:checked + label {
+     background-image: url(run-active.svg);
+     height: 45px;
+     width: 35px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ /* bike */
+ input[type=checkbox][id=bike] + label {
+     background-image: url(bike-inactive.svg);
+     height: 44px;
+     width: 35px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ input[type=checkbox][id=bike]:checked + label {
+     background-image: url(bike-active.svg);
+     height: 45px;
+     width: 35px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ /* swim */
+ input[type=checkbox][id=swim] + label {
+     background-image: url(swim-inactive.svg);
+     height: 45px;
+     width: 35px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ input[type=checkbox][id=swim]:checked + label {
+     background-image: url(swim-active.svg);
+     height: 45px;
+     width: 35px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ /* horse */
+ input[type=checkbox][id=horse] + label {
+     background-image: url(horse-inactive.svg);
+     height: 45px;
+     width: 35px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ input[type=checkbox][id=horse]:checked + label {
+     background-image: url(horse-active.svg);
+     height: 45px;
+     width: 35px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ /* skiing */
+ input[type=checkbox][id=ski] + label {
+     background-image: url(ski-inactive.svg);
+     height: 45px;
+     width: 35px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ input[type=checkbox][id=ski]:checked + label {
+     background-image: url(ski-active.svg);
+     height: 45px;
+     width: 35px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ /* snowshoe */
+ input[type=checkbox][id=snowshoe] + label {
+     background-image: url(snowshoe-inactive.svg);
+     height: 45px;
+     width: 36px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ input[type=checkbox][id=snowshoe]:checked + label {
+     background-image: url(snowshoe-active.svg);
+     height: 45px;
+     width: 36px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ /* accessible */
+ input[type=checkbox][id=accessible] + label {
+     background-image: url(accessible-inactive.svg);
+     height: 45px;
+     width: 36px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ input[type=checkbox][id=accessible]:checked + label {
+     background-image: url(accessible-active.svg);
+     height: 45px;
+     width: 36px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ /* entry fee */
+ input[type=checkbox][id=freeentry] + label {
+     background-image: url(entryfee-inactive.svg);
+     height: 45px;
+     width: 35px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ input[type=checkbox][id=freeentry]:checked + label {
+     background-image: url(entryfee-active.svg);
+     height: 45px;
+     width: 35px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ /* bathroom */
+ input[type=checkbox][id=bathroom] + label {
+     background-image: url(bathroom-inactive.svg);
+     height: 45px;
+     width: 35px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ input[type=checkbox][id=bathroom]:checked + label {
+     background-image: url(bathroom-active.svg);
+     height: 45px;
+     width: 35px;
+     display:inline-block;
+     padding: 0 0 0 0px;
+ }
+ 
+ .slidecontainer {
+     width: 100%; /* Width of the outside container */
+     margin: 0px 0px 15px 0px;
+     text-align: start;
+   }
+   
+   .slider {
+     -webkit-appearance: none;
+     width: 100%;
+     height: 10px;
+     border-radius: 5px;  
+     background: #d3d3d3;
+     outline: none;
+     opacity: 0.7;
+     -webkit-transition: .2s;
+     transition: opacity .2s;
+   }
+   
+   .slider::-webkit-slider-thumb {
+     -webkit-appearance: none;
+     appearance: none;
+     width: 20px;
+     height: 20px;
+     border-radius: 50%; 
+     background: #4CAF50;
+     cursor: pointer;
+   }
+   
+   .slider::-moz-range-thumb {
      width: 25px;
-     padding: 8px 0px;
- }
-
-.activity-types {
-    /* width: 80%; */
-    display: flex;
-    justify-self: flex-end;
-}
-
-#difficulty-display, #attribute {
-     border: 1px #6FCF97 solid;
-     border-radius: 50px;
-     color: #6FCF97;
-     font-size: 80%;
-     padding:3 7 3 7;
-     margin-right: 3px;
-     text-align: center;
-     margin-top: 8px;
      height: 25px;
- }
-
- #difficulty-display {
-    color: white;
-    background-color: #6FCF97;
-}
-
- .trail-img { 
-    width: 100%; 
-    height:180px;
-    object-fit:cover;
-     border-radius: 10px 10px 0 0;
-     overflow: hidden;
-     justify-content: flex-end;
- }
-
- .trail-img img {
-    width: 300px; height:200px;
-    object-fit:cover
- }
-
-#difficulty-input {
-    width: 200px;
-    margin:0px;
-}
-
-#access-toggle {
-    /* width: 50%; */
-    /* justify-content: flex-end; */
-    margin-left: 30px;
-}
-
-
-input[type=checkbox] {
-    display:none;
-}
-
-label {
-    margin-right: 20px;
-}
-
-/* walk */
-input[type=checkbox][id=walk] + label {
-    background-image: url(walk-inactive.svg);
-    height: 44px;
-    width: 35px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-input[type=checkbox][id=walk]:checked + label {
-    background-image: url(walk-active.svg);
-    height: 44px;
-    width: 35px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-/* hike */
-input[type=checkbox][id=hike] + label {
-    background-image: url(hike-inactive.svg);
-    height: 45px;
-    width: 35px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-input[type=checkbox][id=hike]:checked + label {
-    background-image: url(hike-active.svg);
-    height: 45px;
-    width: 35px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-/* run */
-input[type=checkbox][id=run] + label {
-    background-image: url(run-inactive.svg);
-    height: 45px;
-    width: 35px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-input[type=checkbox][id=run]:checked + label {
-    background-image: url(run-active.svg);
-    height: 45px;
-    width: 35px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-/* bike */
-input[type=checkbox][id=bike] + label {
-    background-image: url(bike-inactive.svg);
-    height: 44px;
-    width: 35px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-input[type=checkbox][id=bike]:checked + label {
-    background-image: url(bike-active.svg);
-    height: 45px;
-    width: 35px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-/* swim */
-input[type=checkbox][id=swim] + label {
-    background-image: url(swim-inactive.svg);
-    height: 45px;
-    width: 35px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-input[type=checkbox][id=swim]:checked + label {
-    background-image: url(swim-active.svg);
-    height: 45px;
-    width: 35px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-/* horse */
-input[type=checkbox][id=horse] + label {
-    background-image: url(horse-inactive.svg);
-    height: 45px;
-    width: 35px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-input[type=checkbox][id=horse]:checked + label {
-    background-image: url(horse-active.svg);
-    height: 45px;
-    width: 35px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-/* skiing */
-input[type=checkbox][id=ski] + label {
-    background-image: url(ski-inactive.svg);
-    height: 45px;
-    width: 35px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-input[type=checkbox][id=ski]:checked + label {
-    background-image: url(ski-active.svg);
-    height: 45px;
-    width: 35px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-/* snowshoe */
-input[type=checkbox][id=snowshoe] + label {
-    background-image: url(snowshoe-inactive.svg);
-    height: 45px;
-    width: 36px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-input[type=checkbox][id=snowshoe]:checked + label {
-    background-image: url(snowshoe-active.svg);
-    height: 45px;
-    width: 36px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-/* accessible */
-input[type=checkbox][id=accessible] + label {
-    background-image: url(accessible-inactive.svg);
-    height: 45px;
-    width: 36px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-input[type=checkbox][id=accessible]:checked + label {
-    background-image: url(accessible-active.svg);
-    height: 45px;
-    width: 36px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-/* entry fee */
-input[type=checkbox][id=freeentry] + label {
-    background-image: url(entryfee-inactive.svg);
-    height: 45px;
-    width: 35px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-input[type=checkbox][id=freeentry]:checked + label {
-    background-image: url(entryfee-active.svg);
-    height: 45px;
-    width: 35px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-/* bathroom */
-input[type=checkbox][id=bathroom] + label {
-    background-image: url(bathroom-inactive.svg);
-    height: 45px;
-    width: 35px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-input[type=checkbox][id=bathroom]:checked + label {
-    background-image: url(bathroom-active.svg);
-    height: 45px;
-    width: 35px;
-    display:inline-block;
-    padding: 0 0 0 0px;
-}
-
-.slidecontainer {
-    width: 100%; /* Width of the outside container */
-    margin: 0px 0px 15px 0px;
-    text-align: start;
-  }
-  
-  .slider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 10px;
-    border-radius: 5px;  
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-  }
-  
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%; 
-    background: #4CAF50;
-    cursor: pointer;
-  }
-  
-  .slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #4CAF50;
-    cursor: pointer;
-  } 
-
-  #range {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .background-img {
-      position: absolute;
-  }
-
+     border-radius: 50%;
+     background: #4CAF50;
+     cursor: pointer;
+   } 
+ 
+   #range {
+     display: flex;
+     justify-content: space-between;
+   }
+ 
+   .background-img {
+       position: absolute;
+   }
+ 
+ 
+ 
