@@ -45,6 +45,14 @@ class Result:
         self.img = ith_trails['image id']
         print(self.img)
         self.url = "https://ithacatrails.org/trail/" + str(ith_trails["Ithacatrails ID"])
+        # similarities corresponding to weights
+        self.sim_measures = {
+            "a": sim_tup[0]['a'],
+            "b": sim_tup[0]['b'],
+            "c": sim_tup[0]['c'],
+            "d": sim_tup[0]['d'],
+            "e": sim_tup[0]['e']
+        }
         # self.accessibility_types = kwargs.get('accessibility_types')
 
         
