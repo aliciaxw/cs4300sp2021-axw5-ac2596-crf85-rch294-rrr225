@@ -21,7 +21,7 @@ class Result:
     def __init__(self, sim_tup, **kwargs):
         self.name = sim_tup[1]
         ith_trails = data[self.name]
-
+        self.id = ith_trails["Ithacatrails ID"]
         self.gps = ith_trails['GPS']
         self.length = ith_trails['Distance']
         self.difficulty = ith_trails['Difficulty']

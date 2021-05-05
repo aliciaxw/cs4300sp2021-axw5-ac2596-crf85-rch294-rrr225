@@ -19,33 +19,56 @@ global_weights = {
 	"d": 0.1,
 	"e": 0.2
 }
+# weights for adjusting ranking weights
+alpha = 0.1
+beta = 0.05
 
-@irsystem.route('/', methods=['GET'])
+# Mapping of trail_id to result object after query
+global_results = {}
+
+@irsystem.route('/', methods=['GET', 'POST'])
 def search():
-	# Retrieve values from search query
-	query = request.args.to_dict()
+	global global_results
+	global global_weights
 
-	if query == empty_query or query == {}:
-		data = []
-		output_message = ''
+	if "good" in request.args:
+		update_weights_rocchio(True, global_results[int(request.args['good'])])
+		output_message = f"👍 Your opinion has been received! 👍"
+		return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=global_results.values())
+	elif "bad" in request.args:
+		update_weights_rocchio(False, global_results[int(request.args['bad'])])
+		output_message = f"👎 Your opinion has been received! 👎"
+		return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=global_results.values())
 	else:
-		# Retrieve rankings in the form of (sim_score, trail_name)
-		results = get_rankings_by_query(query, global_weights)
-		output_message = f"🥾 your query: {query['search']} 🥾"
-		data = results
+		# Retrieve values from search query
+		query = request.args.to_dict()
 
-	# Render new outputs
-	return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=data)
+		if query == empty_query or query == {}:
+			data = []
+			output_message = ''
+		else:
+			# Retrieve rankings in the form of (sim_score, trail_name)
+			results = get_rankings_by_query(query, global_weights)
+			# Add results to global results for rocchio update
+			global_results = { result.id:result for result in results}
+			output_message = f"🥾 your query: {query['search']} 🥾"
+			data = results
 
+		# Render new outputs
+		return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=data)
 
-# @irsystem.route('/', methods=['POST'])
-# def update_weights_rocchio(isRelevant, result):
-# 	"""
-# 	Will update ranking result weights based on relevance feedback from user.
-# 	"""
-# 	max_contributing_weight = max(result.sim_measures, key=result.sim_measures.get)
+def update_weights_rocchio(isRelevant, result):
+	"""
+	Will update ranking result weights based on relevance feedback from user.
+	"""
+	global global_weights
+	max_contributing_weight = max(result.sim_measures, key=result.sim_measures.get)
+	if isRelevant:
+		global_weights[max_contributing_weight] += alpha
+		for measure in result.sim_measures:
+			global_weights[measure] -= beta 
 
-# 	if request.form['feedback'] == 'good':
-# 		global_weights[max_contributing_weight] += 0.1
-# 	elif request.form['feedback'] == 'bad':
-# 		global_weights[max_contributing_weight] -= 0.1
+	else:
+		global_weights[max_contributing_weight] -= alpha
+		for measure in result.sim_measures:
+			global_weights[measure] += beta 
