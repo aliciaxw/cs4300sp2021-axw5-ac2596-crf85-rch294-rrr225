@@ -14,8 +14,8 @@
    }
    
     body {
-        padding-top: 5%;
-        padding-bottom: 15px;
+        /* padding-top: 5%; */
+        /* padding-bottom: 15px; */
         background-color:  #D2E8D9;
         /* position: fixed; */
         /* height: 100%; */
@@ -40,8 +40,10 @@
     } */
 
     .content {
+        padding-top: 5%;
         margin-left: 50px;
         width: 100%;
+        height:100%;
         overflow: auto;
         /* position: absolute; 
         top: 10px; 
@@ -136,6 +138,7 @@
  }
  
   .result {
+      margin-bottom: 20px;
      position: relative;
      z-index: 1; /* The z-index should be higher than Google Maps */
   }

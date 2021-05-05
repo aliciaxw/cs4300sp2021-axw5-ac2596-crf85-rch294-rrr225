@@ -17,7 +17,6 @@
       },
       zoom: 15,
       mapId: "ca5c01778ebc0ac",
-      // disableDefaultUI: true,
       streetViewControl: false,
       scaleControl: false,
       mapTypeControl: false
@@ -148,11 +147,10 @@
       </div>
 
 
-      <h3 class="form-inline">{{output_message}}</h3>
+      <h3>{{output_message}}</h3>
       <form class="">
         {% if data %}
         {% for d in data %}
-        <br>
         <a href={{d.url}}>
           <div class="card result">
             <div class="trail-imgs">
