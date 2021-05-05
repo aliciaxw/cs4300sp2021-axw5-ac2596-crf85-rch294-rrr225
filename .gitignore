@@ -6,7 +6,6 @@ vagrant/site.retry
 vagrant/a4keypair.pem
 .idea/
 *.iml
-.env
 .envrc
 .DS_Store
 scrapers/.ipynb_checkpoints/

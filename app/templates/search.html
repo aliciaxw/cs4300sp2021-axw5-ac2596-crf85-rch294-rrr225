@@ -13,7 +13,6 @@
   <div class="card">
     <div class="container">
       <form class="form-inline global-search">
-
         <div class="col">
           <h1 style="font-size: 55px; font-family:Futura; color:forestgreen">
             Take a hike! </h1>
@@ -24,18 +23,22 @@
         <div class="col">
           <h4>KEYWORDS</h4>
           <input id="input" type="text" name="search" class="form-control"
-            placeholder="Easy hiking trail with scenic waterfall view">
-
+            placeholder="Easy hiking trail with scenic waterfall view"
+            value="{{ query['search'] }}">
           <div id="toggles" class="display-row">
             <div class="display-row">
               <div id="difficulty-toggle" class="col">
                 <h4>DIFFICULTY</h4>
                 <label for="difficulty"></label>
                 <select name="difficulty" id="difficulty-input" class="form-control">
-                  <option disabled selected value>Select Difficulty</option>
-                  <option value="easy">Easy</option>
-                  <option value="moderate">Moderate</option>
-                  <option value="hard">Hard</option>
+                  <option disabled selected value> Select Difficulty </option>
+                  {% for field in ['Easy', 'Moderate', 'Hard'] %}
+                    {% if query['difficulty'] == field %}
+                      <option selected value="{{ field }}">{{field}}</option>
+                    {% else %}
+                      <option value="{{ field }}">{{field}}</option>
+                    {% endif %}
+                  {% endfor %}
                 </select>
               </div>
             </div>
@@ -43,13 +46,25 @@
             <div id="access-toggle" class="col">
               <h4>ACCESSIBILITY</h4>
               <div class="toggle">
-                <input type="checkbox" id="accessible" name="requireAccessible" />
+                <input type="checkbox" id="accessible" name="requireAccessible" 
+                  {% if query['requireAccessible'] == 'on' %}
+                    checked
+                  {% endif %}
+                  />
                 <label for="accessible"></label>
 
-                <input type="checkbox" id="freeentry" name="requireFreeEntry" />
+                <input type="checkbox" id="freeentry" name="requireFreeEntry" 
+                  {% if query['requireFreeEntry'] == 'on' %}
+                    checked
+                  {% endif %}
+                  />
                 <label for="freeentry"></label>
 
-                <input type="checkbox" id="bathroom" name="requireBathroom" />
+                <input type="checkbox" id="bathroom" name="requireBathroom" 
+                  {% if query['requireBathroom'] == 'on' %}
+                    checked
+                  {% endif %}
+                  />
                 <label for="bathroom"></label>
               </div>
             </div>
@@ -58,22 +73,17 @@
         <div id="activity-toggle" class="col">
           <h4>ACTIVITY TYPE</h4>
           <div class="toggle">
-            <input type="checkbox" id="walk" name="walkOn" />
-            <label for="walk"></label>
-            <input type="checkbox" id="hike" name="hikeOn" />
-            <label for="hike"></label>
-            <input type="checkbox" id="run" name="runOn" />
-            <label for="run"></label>
-            <input type="checkbox" id="bike" name="bikeOn" />
-            <label for="bike"></label>
-            <input type="checkbox" id="horse" name="horseOn" />
-            <label for="horse"></label>
-            <input type="checkbox" id="swim" name="swimOn" />
-            <label for="swim"></label>
-            <input type="checkbox" id="ski" name="skiOn" />
-            <label for="ski"></label>
-            <input type="checkbox" id="snowshoe" name="snowshoeOn" />
-            <label for="snowshoe"></label>
+            {% for activity in ['walk', 'hike', 'run', 'bike', 'horse', 'swim', 'ski', 'snowshoe'] %}
+              <input 
+                type="checkbox" 
+                id="{{ activity }}"
+                name="{{ activity + 'On' }}"
+                {% if query[(activity + 'On')] == 'on' %} 
+                  checked 
+                {% endif %} 
+                />
+              <label for="{{activity}}"></label>
+            {% endfor %}
           </div>
         </div>
 
@@ -83,7 +93,39 @@
             <p> 0 mi</p>
             <p> 5 mi</p>
           </div>
-          <input type="range" name="setDistance" min="0" max="5" value="2" class="slider" id="setDistance">
+          <input 
+            type="range" 
+            name="setDistance" 
+            min="0" 
+            max="5" 
+            value=
+              {% if query %}
+                "{{ query['setDistance'] }}"
+              {% else %}
+                "2"
+              {% endif %} 
+            class="slider" 
+            id="setDistance"
+            oninput='this.nextElementSibling.value = this.value + ` mi`'>
+            <input 
+              id="setDistance_sibling" 
+              type="button" 
+              value=
+              {% if query %}
+                "{{ query['setDistance'] + ' mi' }}"
+              {% else %}
+                "2 mi"
+              {% endif %}
+              style="
+                color: darkgray;
+                font-size: 12px;
+                width: 20%;
+                margin-left: 40%; 
+                margin-top: 2%;
+                border: none;
+                background-color: transparent;
+              "
+            disabled />
         </div>
 
         <button type="submit" class="btn btn-info"> Find my next hike! </button>

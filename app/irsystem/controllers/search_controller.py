@@ -1,14 +1,14 @@
-from . import *  
+from . import *
 from app.irsystem.models.helpers import *
 from app.irsystem.models.helpers import NumpyEncoder as NumpyEncoder
 from app.irsystem.models.search import *
 
 project_name = "Hiking Trail Recommender"
 net_id = "Ryan Richardson (rrr225) " + \
-		 "Alicia Wang (axw5) " + \
-		 "Alicia Chen (ac2596) " + \
-		 "Cesar Ferreyra-Mansilla (crf85) " + \
-		 "Renee Hoh (rch294)"
+    "Alicia Wang (axw5) " + \
+    "Alicia Chen (ac2596) " + \
+    "Cesar Ferreyra-Mansilla (crf85) " + \
+    "Renee Hoh (rch294)"
 empty_query = {'search': ''}
 
 # weights to be updated
@@ -26,22 +26,27 @@ beta = 0.05
 # Mapping of trail_id to result object after query
 global_results = {}
 
+# The previous query made
+global_last_query = {}
+
 @irsystem.route('/', methods=['GET', 'POST'])
 def search():
 	global global_results
 	global global_weights
+	global global_last_query
 
 	if "good" in request.args:
 		update_weights_rocchio(True, global_results[int(request.args['good'])])
 		output_message = f"👍 your opinion has been received! 👍"
-		return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=global_results.values())
+		return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=global_results.values(), query=global_last_query)
 	elif "bad" in request.args:
 		update_weights_rocchio(False, global_results[int(request.args['bad'])])
 		output_message = f"👎 your opinion has been received! 👎"
-		return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=global_results.values())
+		return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=global_results.values(), query=global_last_query)
 	else:
 		# Retrieve values from search query
 		query = request.args.to_dict()
+		global_last_query = query
 
 		if query == empty_query or query == {}:
 			data = []
@@ -59,7 +64,7 @@ def search():
 			data = results
 
 		# Render new outputs
-		return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=data)
+		return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=data, query=query)
 
 def update_weights_rocchio(isRelevant, result):
 	"""
