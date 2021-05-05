@@ -33,11 +33,11 @@ def search():
 
 	if "good" in request.args:
 		update_weights_rocchio(True, global_results[int(request.args['good'])])
-		output_message = f"👍 Your opinion has been received! 👍"
+		output_message = f"👍 your opinion has been received! 👍"
 		return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=global_results.values())
 	elif "bad" in request.args:
 		update_weights_rocchio(False, global_results[int(request.args['bad'])])
-		output_message = f"👎 Your opinion has been received! 👎"
+		output_message = f"👎 your opinion has been received! 👎"
 		return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=global_results.values())
 	else:
 		# Retrieve values from search query
@@ -51,7 +51,11 @@ def search():
 			results = get_rankings_by_query(query, global_weights)
 			# Add results to global results for rocchio update
 			global_results = { result.id:result for result in results}
-			output_message = f"🥾 your query: {query['search']} 🥾"
+			print(query['search'])
+			if query['search']:
+				output_message = f"🥾 you searched: {query['search']} 🥾"
+			else:
+				output_message = "🌲 we recommend these trails 🌲"
 			data = results
 
 		# Render new outputs
