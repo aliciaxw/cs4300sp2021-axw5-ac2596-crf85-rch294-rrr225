@@ -150,7 +150,10 @@
               <p id="name"><b>{{d.name}}</b></p>
             </div>
             <p id="length">{{d.length}} mi distance</p>
-            <p id="review">"{{ d.review }}"</p>
+            <p>High user rating: {{ d.review.good[1]}}</p>
+            <p id="review">"{{ d.review.good[0]}}"</p>
+            <p>Low user rating: {{ d.review.bad[1]}}</p>
+            <p style="font-size: 90%; font-style: italic;">"{{ d.review.bad[0] }}"</p>
             <div class="activity-types">
               <p id="difficulty-display">{{d.difficulty}}</p>
               {% for activity in d.activity_types %}
