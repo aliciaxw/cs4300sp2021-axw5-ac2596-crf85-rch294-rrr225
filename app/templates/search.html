@@ -15,29 +15,54 @@
         lat: 42.444,
         lng: -76.501
       },
-      zoom: 15
+      zoom: 15,
+      mapId: "ca5c01778ebc0ac",
+      // disableDefaultUI: true,
+      streetViewControl: false,
+      scaleControl: false,
+      mapTypeControl: false
     });
+
+    var markersArray = [];
     "{% if data %}"
     "{% for d in data %}"
     var myLatLng = { lat: parseFloat("{{d.gps[0]}}"), lng: parseFloat("{{d.gps[1]}}") }
-    new google.maps.Marker({
+    var marker = new google.maps.Marker({
       position: myLatLng,
       map,
       title: "{{d.name}}",
     });
+    var contentString =
+      '<p>{{d.name}}</p>';
+
+    // Info window 
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString,
+    });
+    marker.addListener("click", () => {
+      infowindow.open(map, marker);
+    });
+
+    // Zoom to fit markers
+    markersArray.push(marker);
     "    {% endfor %}"
     "    {% endif %}"
+    var bounds = new google.maps.LatLngBounds();
+    for (var i = 0; i < markersArray.length; i++) {
+      bounds.extend(markersArray[i]);
+    }
+    map.fitBounds(bounds);
   }
 </script>
 
 <body>
   <div class="wrapper">
     <!-- <div class="map-wrapper"> -->
-      <div id="map"></div>
+    <div id="map"></div>
     <!-- </div> -->
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArkKUMZfAd7LvEhIoHC6Asbhw9wmU3qJ0&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArkKUMZfAd7LvEhIoHC6Asbhw9wmU3qJ0&map_ids=ca5c01778ebc0ac&callback=initMap&libraries=&v=weekly"
       async></script>
     <div class="content">
       <div class="card">
