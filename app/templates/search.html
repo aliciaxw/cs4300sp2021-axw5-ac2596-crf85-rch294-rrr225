@@ -10,19 +10,29 @@
 <script>
   let map;
   function initMap() {
-    const myLatLng = { lat: 42.444, lng: -76.501 };
     map = new google.maps.Map(document.getElementById("map"), {
       center: {
         lat: 42.444,
         lng: -76.501
-      }, zoom: 15
+      },
+      zoom: 15
     });
+    "{% if data %}"
+    "{% for d in data %}"
+    var myLatLng = { lat: parseFloat("{{d.gps[0]}}"), lng: parseFloat("{{d.gps[1]}}") }
     new google.maps.Marker({
       position: myLatLng,
       map,
-      title: "Hello World!",
+      title: "{{d.name}}",
     });
-  } // initMap(); 
+    "    {% endfor %}"
+    "    {% endif %}"
+  }
+  // function markers() {
+
+  // }
+
+  // markers();
 </script>
 
 <body>
