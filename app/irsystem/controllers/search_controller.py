@@ -19,6 +19,7 @@ global_weights = {
 	"d": 0.1,
 	"e": 0.2
 }
+
 # weights for adjusting ranking weights
 alpha = 0.1
 beta = 0.05
