@@ -2,6 +2,7 @@ from . import *
 from app.irsystem.models.helpers import *
 from app.irsystem.models.helpers import NumpyEncoder as NumpyEncoder
 from app.irsystem.models.search import *
+import os
 
 project_name = "Hiking Trail Recommender"
 net_id = "Ryan Richardson (rrr225) " + \
@@ -20,6 +21,8 @@ global_weights = {
 	"e": 0.2
 }
 
+gmap_api_key = os.environ.get('GMAPS_API_KEY')
+
 @irsystem.route('/', methods=['GET'])
 def search():
 	# Retrieve values from search query
@@ -35,7 +38,7 @@ def search():
 		data = results
 
 	# Render new outputs
-	return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=data)
+	return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=data, map_api=gmap_api_key)
 
 
 # @irsystem.route('/', methods=['POST'])

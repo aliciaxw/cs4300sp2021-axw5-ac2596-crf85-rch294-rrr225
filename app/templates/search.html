@@ -8,6 +8,8 @@
 </head>
 
 <script>
+
+  // add os.env
   let map;
   function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
@@ -23,6 +25,7 @@
     });
 
     var markersArray = [];
+    var bounds = new google.maps.LatLngBounds();
     "{% if data %}"
     "{% for d in data %}"
     var myLatLng = { lat: parseFloat("{{d.gps[0]}}"), lng: parseFloat("{{d.gps[1]}}") }
@@ -31,25 +34,38 @@
       map,
       title: "{{d.name}}",
     });
-    var contentString =
+    markersArray.push(marker);
+
+    var content =
       '<p>{{d.name}}</p>';
 
-    // Info window 
+    // Info window
     var infowindow = new google.maps.InfoWindow({
-      content: contentString,
+      content: content,
     });
     marker.addListener("click", () => {
       infowindow.open(map, marker);
     });
 
-    // Zoom to fit markers
-    markersArray.push(marker);
+    google.maps.event.addListener(marker, 'click', (function (marker, content, infowindow) {
+      return function () {
+        infowindow.setContent(content);
+        infowindow.open(map, marker);
+      };
+    })(marker, content, infowindow));
+
+    bounds.extend(marker);
+
+
+    console.log(markersArray);
     "    {% endfor %}"
     "    {% endif %}"
-    var bounds = new google.maps.LatLngBounds();
-    for (var i = 0; i < markersArray.length; i++) {
-      bounds.extend(markersArray[i]);
-    }
+
+    // Zoom to fit markers
+    // var bounds = new google.maps.LatLngBounds();
+    // for (var i = 0; i < markersArray.length; i++) {
+    //   bounds.extend(markersArray[i]);
+    // }
     map.fitBounds(bounds);
   }
 </script>
@@ -61,7 +77,7 @@
     <!-- </div> -->
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArkKUMZfAd7LvEhIoHC6Asbhw9wmU3qJ0&map_ids=ca5c01778ebc0ac&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key={{map_api}}&map_ids=ca5c01778ebc0ac&callback=initMap&libraries=&v=weekly"
       async></script>
     <div class="content">
       <div class="card">
