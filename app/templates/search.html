@@ -23,6 +23,7 @@
     });
 
     var bounds = new google.maps.LatLngBounds();
+    let counter = 1;
 
     "{% if data %}"
     "{% for d in data %}"
@@ -31,27 +32,19 @@
       position: myLatLng,
       map,
       title: "{{d.name}}",
+      label: String(counter),
     });
 
     // Zoom to fit markers
     bounds.extend(marker.position);
-    var contentString =
-      '<p>{{d.name}}</p>';
-
-    // Info window 
-    var infowindow = new google.maps.InfoWindow({
-      content: contentString,
-    });
-    marker.addListener("click", () => {
-      infowindow.open(map, marker);
-    });
+    counter += 1;
 
     "{% endfor %}"
     "{% endif %}"
 
     map.fitBounds(bounds);
     // Move camera right
-    map.panBy(-500, 0);
+    map.panBy(-450, 0);
   }
 </script>
 
@@ -71,7 +64,11 @@
             <div class="col">
               <h1 style="font-size: 55px; font-family:Futura; color:forestgreen">
                 Take a hike! </h1>
-              <p>Hiking trail recommender for the Finger Lakes area</p>
+              <p>
+                A hiking trail recommender for the Finger Lakes area |
+                <a href="https://cs4300-hiking-trailsv1.herokuapp.com/" style="color: forestgreen">v1</a> |
+                <a href="https://cs4300-hiking-trailsv2.herokuapp.com/" style="color: forestgreen">v2</a>
+              </p>
               <p id="netid"> {{ netid }}</p>
             </div>
 
