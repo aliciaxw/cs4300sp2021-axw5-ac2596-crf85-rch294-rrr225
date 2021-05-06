@@ -22,18 +22,27 @@
       mapTypeControl: false
     });
 
+    function jitter() {
+      return Math.random() * (0.001) + 0.001;
+    }
+
     var bounds = new google.maps.LatLngBounds();
     let counter = 1;
+
+
 
     "{% if data %}"
     "{% for d in data %}"
     var myLatLng = { lat: parseFloat("{{d.gps[0]}}"), lng: parseFloat("{{d.gps[1]}}") }
+    var myLatLngJitter = { lat: parseFloat("{{d.gps[0]}}") + jitter(), lng: parseFloat("{{d.gps[1]}}") + jitter() }
+
     var marker = new google.maps.Marker({
-      position: myLatLng,
+      position: myLatLngJitter,
       map,
       title: "{{d.name}}",
       label: String(counter),
     });
+
 
     // Info windows
     var content = "<p> 🏔 {{d.name}} 🏔"
