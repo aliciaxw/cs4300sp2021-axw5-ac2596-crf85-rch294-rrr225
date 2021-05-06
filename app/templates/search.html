@@ -8,8 +8,6 @@
 </head>
 
 <script>
-
-  // add os.env
   let map;
   function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
@@ -25,7 +23,6 @@
     });
 
     var markersArray = [];
-    var bounds = new google.maps.LatLngBounds();
     "{% if data %}"
     "{% for d in data %}"
     var myLatLng = { lat: parseFloat("{{d.gps[0]}}"), lng: parseFloat("{{d.gps[1]}}") }
@@ -34,38 +31,25 @@
       map,
       title: "{{d.name}}",
     });
-    markersArray.push(marker);
-
-    var content =
+    var contentString =
       '<p>{{d.name}}</p>';
 
-    // Info window
+    // Info window 
     var infowindow = new google.maps.InfoWindow({
-      content: content,
+      content: contentString,
     });
     marker.addListener("click", () => {
       infowindow.open(map, marker);
     });
 
-    google.maps.event.addListener(marker, 'click', (function (marker, content, infowindow) {
-      return function () {
-        infowindow.setContent(content);
-        infowindow.open(map, marker);
-      };
-    })(marker, content, infowindow));
-
-    bounds.extend(marker);
-
-
-    console.log(markersArray);
+    // Zoom to fit markers
+    markersArray.push(marker);
     "    {% endfor %}"
     "    {% endif %}"
-
-    // Zoom to fit markers
-    // var bounds = new google.maps.LatLngBounds();
-    // for (var i = 0; i < markersArray.length; i++) {
-    //   bounds.extend(markersArray[i]);
-    // }
+    var bounds = new google.maps.LatLngBounds();
+    for (var i = 0; i < markersArray.length; i++) {
+      bounds.extend(markersArray[i]);
+    }
     map.fitBounds(bounds);
   }
 </script>
@@ -83,7 +67,6 @@
       <div class="card">
         <div class="container">
           <form class="form-inline global-search">
-
             <div class="col">
               <h1 style="font-size: 55px; font-family:Futura; color:forestgreen">
                 Take a hike! </h1>
@@ -94,7 +77,8 @@
             <div class="col">
               <h4>KEYWORDS</h4>
               <input id="input" type="text" name="search" class="form-control"
-                placeholder="Easy hiking trail with scenic waterfall view">
+                placeholder="Easy hiking trail with scenic waterfall view"
+                value="{{ query['search'] }}">
 
               <div id="toggles" class="display-row">
                 <div class="display-row">
@@ -103,9 +87,13 @@
                     <label for="difficulty"></label>
                     <select name="difficulty" id="difficulty-input" class="form-control">
                       <option disabled selected value>Select Difficulty</option>
-                      <option value="easy">Easy</option>
-                      <option value="moderate">Moderate</option>
-                      <option value="hard">Hard</option>
+                      {% for field in ['Easy', 'Moderate', 'Hard'] %}
+                        {% if query['difficulty'] == field %}
+                          <option selected value="{{ field }}">{{field}}</option>
+                        {% else %}
+                          <option value="{{ field }}">{{field}}</option>
+                        {% endif %}
+                      {% endfor %}
                     </select>
                   </div>
                 </div>
@@ -113,13 +101,25 @@
                 <div id="access-toggle" class="col">
                   <h4>ACCESSIBILITY</h4>
                   <div class="toggle">
-                    <input type="checkbox" id="accessible" name="requireAccessible" />
+                    <input type="checkbox" id="accessible" name="requireAccessible" 
+                      {% if query['requireAccessible'] == 'on' %}
+                        checked
+                      {% endif %}
+                      />
                     <label for="accessible"></label>
 
-                    <input type="checkbox" id="freeentry" name="requireFreeEntry" />
+                    <input type="checkbox" id="freeentry" name="requireFreeEntry" 
+                      {% if query['requireFreeEntry'] == 'on' %}
+                        checked
+                      {% endif %}
+                      />
                     <label for="freeentry"></label>
 
-                    <input type="checkbox" id="bathroom" name="requireBathroom" />
+                    <input type="checkbox" id="bathroom" name="requireBathroom" 
+                      {% if query['requireBathroom'] == 'on' %}
+                        checked
+                      {% endif %}
+                      />
                     <label for="bathroom"></label>
                   </div>
                 </div>
@@ -129,32 +129,59 @@
             <div id="activity-toggle" class="col">
               <h4>ACTIVITY TYPE</h4>
               <div class="toggle">
-                <input type="checkbox" id="walk" name="walkOn" />
-                <label for="walk"></label>
-                <input type="checkbox" id="hike" name="hikeOn" />
-                <label for="hike"></label>
-                <input type="checkbox" id="run" name="runOn" />
-                <label for="run"></label>
-                <input type="checkbox" id="bike" name="bikeOn" />
-                <label for="bike"></label>
-                <input type="checkbox" id="horse" name="horseOn" />
-                <label for="horse"></label>
-                <input type="checkbox" id="swim" name="swimOn" />
-                <label for="swim"></label>
-                <input type="checkbox" id="ski" name="skiOn" />
-                <label for="ski"></label>
-                <input type="checkbox" id="snowshoe" name="snowshoeOn" />
-                <label for="snowshoe"></label>
+                {% for activity in ['walk', 'hike', 'run', 'bike', 'horse', 'swim', 'ski', 'snowshoe'] %}
+                  <input 
+                    type="checkbox" 
+                    id="{{ activity }}"
+                    name="{{ activity + 'On' }}"
+                    {% if query[(activity + 'On')] == 'on' %} 
+                      checked 
+                    {% endif %} 
+                    />
+                  <label for="{{activity}}"></label>
+                {% endfor %}
               </div>
             </div>
 
             <div class="slidecontainer">
-              <h4>MAX LENGTH OF TRAIL</h4>
+              <h4>MAXIMUM DISTANCE</h4>
               <div id="range" class="display-row">
                 <p> 0 mi</p>
                 <p> 5 mi</p>
               </div>
-              <input type="range" name="setDistance" min="0" max="5" value="2" class="slider" id="setDistance">
+              <input 
+                type="range" 
+                name="setDistance" 
+                min="0" 
+                max="5" 
+                value=
+                  {% if query %}
+                    "{{ query['setDistance'] }}"
+                  {% else %}
+                    "2"
+                  {% endif %} 
+                class="slider" 
+                id="setDistance"
+                oninput='this.nextElementSibling.value = this.value + ` mi`'>
+                <input 
+                  id="setDistance_sibling" 
+                  type="button" 
+                  value=
+                  {% if query %}
+                    "{{ query['setDistance'] + ' mi' }}"
+                  {% else %}
+                    "2 mi"
+                  {% endif %}
+                  style="
+                    color: darkgray;
+                    font-size: 12px;
+                    width: 20%;
+                    margin-left: 40%; 
+                    margin-top: 2%;
+                    border: none;
+                    background-color: transparent;
+                  "
+                disabled />
             </div>
 
             <button type="submit" class="btn btn-info"> Find my next hike! </button>
@@ -163,38 +190,70 @@
       </div>
 
 
-      <h3>{{output_message}}</h3>
-      <form class="">
-        {% if data %}
-        {% for d in data %}
-        <a href={{d.url}}>
-          <div class="card result">
-            <div class="trail-imgs">
-              <img src={{d.img}} alt="Hiking Trail" class="trail-img" />
+  <h3 class="form-inline global-search">{{output_message}}</h3>
+  <form class="">
+    {% if data %}
+    {% for d in data %}
+    <br>
+    <div class="card result">
+      <div class="trail-imgs">
+        <img src={{d.img}} alt="Hiking Trail" class="trail-img" />
+      </div>
+      <div class="container col" id="results">
+        <div class="trail-info">
+          <a href={{d.url}}>
+            <div class="display-row">
+              <p id="name"><b>{{d.name}}</b></p>
             </div>
-            <div class="container col" id="results">
-              <div class="trail-info">
-                <div class="display-row vert-align">
-                  <p id="name"><b>{{d.name}}</b></p>
-                </div>
-                <p id="length">{{d.length}} miles long</p>
-                <span id="attribute">good suggestion</span>
-                <span id="attribute">bad suggestion</span>
-                <p id="review">"{{ d.review }}"</p>
-                <div class="activity-types">
-                  <p id="difficulty-display">{{d.difficulty}}</p>
-                  {% for activity in d.activity_types %}
-                  <img src={{activity}} alt="activity icon" id="activity-type" />
-                  {% endfor %}
-                  <div id="attributes" class="display-row">
-                    {% for attribute in d.attributes %}
-                    <p id="attribute">{{ attribute }}</p>
-                    {% endfor %}
-                  </div>
-                </div>
-              </div>
+          </a>
+
+          <div class="display-row">
+            <p id="length" id='length'>{{d.length}} mi distance</p>
+            <form method="post">
+              <button type="submit" id="suggestion-good" value={{d.id}} name="good">
+                <svg height="20" viewBox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="forestgreen" d="m0 1v8c0 .552246.447693 1 1 1h3v-10h-3c-.552307 0-1 .447693-1 1z"
+                    transform="translate(0 5)" />
+                  <path fill="forestgreen"
+                    d="m9.15332 5.02979h-2.9541c-.258301 0-.387695-.172363-.431152-.246582-.043457-.0737305-.131348-.270508-.0063477-.496094l1.0415-1.87549c.228516-.410645.251953-.893555.0649414-1.32471-.187012-.43164-.556152-.744629-1.0127-.858398l-.734375-.183594c-.178711-.0449219-.368164.0122071-.492676.150391l-3.9873 4.42969c-.413574.460449-.641113 1.0542-.641113 1.67236v5.23242c0 1.37842 1.12158 2.5 2.5 2.5l4.97412-.0004883c1.12305 0 2.11475-.756348 2.41113-1.83887l1.06738-4.89844c.03125-.13623.0473633-.275879.0473633-.415527 0-1.01807-.828613-1.84668-1.84668-1.84668z"
+                    transform="translate(5 .97)" />
+                </svg>
+              </button>
+              <!-- <label for="suggestion-good"></label> -->
+
+              <button type="submit" id="suggestion-bad" value={{d.id}} name="bad">
+                <svg id="Bold" enable-background="new 0 0 24 24" height="20" viewBox="0 0 24 24" width="20"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <!-- <g fi ='green'> -->
+                  <path fill='#db4409'
+                    d="m22.25 1h-2.5c-.965 0-1.75.785-1.75 1.75v11.5c0 .965.785 1.75 1.75 1.75h2.5c.965 0 1.75-.785 1.75-1.75v-11.5c0-.965-.785-1.75-1.75-1.75z" />
+                  <path fill='#db4409'
+                    d="m5.119.75c-1.95 0-3.61 1.4-3.94 3.32l-1.12 6.5c-.42 2.45 1.46 4.68 3.94 4.68h4.72s-.75 1.5-.75 4c0 3 2.25 4 3.25 4s1.5-.5 1.5-3c0-2.376 2.301-4.288 3.781-5.273v-12.388c-1.601-.741-4.806-1.839-9.781-1.839z" />
+                  <!-- </g> -->
+                </svg>
+              </button>
+              <!-- <label for="suggestion-bad"></label> -->
+            </form>
+          </div>
+
+          <p><b>👍 High user rating: {{ d.review.good[1]}}</b></p>
+          <p id="review">"{{ d.review.good[0]}}"</p>
+          <p><b>👎 Low user rating: {{ d.review.bad[1]}}</b></p>
+          <p style="font-size: 90%; font-style: italic;">"{{ d.review.bad[0] }}"</p>
+
+          <div class="activity-types">
+            <p id="difficulty-display">{{d.difficulty}}</p>
+            {% for activity in d.activity_types %}
+            <img src={{activity}} alt="activity icon" id="activity-type" />
+            {% endfor %}
+            <div id="attributes" class="display-row">
+              {% for attribute in d.attributes %}
+              <p id="attribute">{{ attribute }}</p>
+              {% endfor %}
             </div>
-        </a>
+          </div>
+        </div>
+      </div>
     </div>
     {% endfor %}
     {% endif %}
