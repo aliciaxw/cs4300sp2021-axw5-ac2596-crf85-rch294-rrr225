@@ -35,6 +35,17 @@
       label: String(counter),
     });
 
+    // Info windows
+    var content = "<p> 🏔 {{d.name}} 🏔"
+    var newInfowindow = new google.maps.InfoWindow({ content: content });
+    marker.infowindow = newInfowindow;
+    marker.addListener('click', function () {
+      return this.infowindow.open(map, this);
+    })
+    google.maps.event.addListener(marker, 'click', function () {
+      this.infowindow.open(map, this);
+    });
+
     // Zoom to fit markers
     bounds.extend(marker.position);
     counter += 1;
@@ -74,8 +85,7 @@
 
             <div class="col">
               <h4>KEYWORDS</h4>
-              <input id="input" type="text" name="search" class="form-control"
-                placeholder="scenic views of waterfalls"
+              <input id="input" type="text" name="search" class="form-control" placeholder="scenic views of waterfalls"
                 value="{{ query['search'] }}">
 
               <div id="toggles" class="display-row">
@@ -86,11 +96,11 @@
                     <select name="difficulty" id="difficulty-input" class="form-control">
                       <option disabled selected value>Select Difficulty</option>
                       {% for field in ['Easy', 'Moderate', 'Hard'] %}
-                        {% if query['difficulty'] == field %}
-                          <option selected value="{{ field }}">{{field}}</option>
-                        {% else %}
-                          <option value="{{ field }}">{{field}}</option>
-                        {% endif %}
+                      {% if query['difficulty'] == field %}
+                      <option selected value="{{ field }}">{{field}}</option>
+                      {% else %}
+                      <option value="{{ field }}">{{field}}</option>
+                      {% endif %}
                       {% endfor %}
                     </select>
                   </div>
@@ -99,25 +109,16 @@
                 <div id="access-toggle" class="col">
                   <h4>ACCESSIBILITY</h4>
                   <div class="toggle">
-                    <input type="checkbox" id="accessible" name="requireAccessible" 
-                      {% if query['requireAccessible'] == 'on' %}
-                        checked
-                      {% endif %}
-                      />
+                    <input type="checkbox" id="accessible" name="requireAccessible"
+                      {% if query['requireAccessible'] == 'on' %} checked {% endif %} />
                     <label for="accessible"></label>
 
-                    <input type="checkbox" id="freeentry" name="requireFreeEntry" 
-                      {% if query['requireFreeEntry'] == 'on' %}
-                        checked
-                      {% endif %}
-                      />
+                    <input type="checkbox" id="freeentry" name="requireFreeEntry"
+                      {% if query['requireFreeEntry'] == 'on' %} checked {% endif %} />
                     <label for="freeentry"></label>
 
-                    <input type="checkbox" id="bathroom" name="requireBathroom" 
-                      {% if query['requireBathroom'] == 'on' %}
-                        checked
-                      {% endif %}
-                      />
+                    <input type="checkbox" id="bathroom" name="requireBathroom"
+                      {% if query['requireBathroom'] == 'on' %} checked {% endif %} />
                     <label for="bathroom"></label>
                   </div>
                 </div>
@@ -128,15 +129,9 @@
               <h4>ACTIVITY TYPE</h4>
               <div class="toggle">
                 {% for activity in ['walk', 'hike', 'run', 'bike', 'horse', 'swim', 'ski', 'snowshoe'] %}
-                  <input 
-                    type="checkbox" 
-                    id="{{ activity }}"
-                    name="{{ activity + 'On' }}"
-                    {% if query[(activity + 'On')] == 'on' %} 
-                      checked 
-                    {% endif %} 
-                    />
-                  <label for="{{activity}}"></label>
+                <input type="checkbox" id="{{ activity }}" name="{{ activity + 'On' }}"
+                  {% if query[(activity + 'On')] == 'on' %} checked {% endif %} />
+                <label for="{{activity}}"></label>
                 {% endfor %}
               </div>
             </div>
@@ -147,30 +142,11 @@
                 <p> 0 mi</p>
                 <p> 5 mi</p>
               </div>
-              <input 
-                type="range" 
-                name="setDistance" 
-                min="0" 
-                max="5" 
-                value=
-                  {% if query %}
-                    "{{ query['setDistance'] }}"
-                  {% else %}
-                    "2"
-                  {% endif %} 
-                class="slider" 
-                id="setDistance"
+              <input type="range" name="setDistance" min="0" max="5" value={% if query %} "{{ query['setDistance'] }}"
+                {% else %} "2" {% endif %} class="slider" id="setDistance"
                 oninput='this.nextElementSibling.value = this.value + ` mi`'>
-                <input 
-                  id="setDistance_sibling" 
-                  type="button" 
-                  value=
-                  {% if query %}
-                    "{{ query['setDistance'] + ' mi' }}"
-                  {% else %}
-                    "2 mi"
-                  {% endif %}
-                  style="
+              <input id="setDistance_sibling" type="button" value={% if query %} "{{ query['setDistance'] + ' mi' }}"
+                {% else %} "2 mi" {% endif %} style="
                     color: darkgray;
                     font-size: 12px;
                     width: 20%;
@@ -178,92 +154,97 @@
                     margin-top: 2%;
                     border: none;
                     background-color: transparent;
-                  "
-                disabled />
+                  " disabled />
             </div>
 
             <button type="submit" class="btn btn-info"> Find my next hike! </button>
             <br />
             <br />
-            <h4 style="font-size: 20px;">{{output_message}}</h4>
+            <h4 style="font-size: 15px;">{{output_message}}</h4>
         </div>
         </form>
       </div>
 
 
-  <form class="">
-    {% if data %}
-    {% for d in data %}
-    <br>
-    <div class="card result">
-      <div class="trail-imgs">
-        <img src={{d.img}} alt="Hiking Trail" class="trail-img" />
-      </div>
-      <div class="container col" id="results">
-        <div class="trail-info">
-          <a href={{d.url}}>
-            <div class="display-row">
-              <p id="name"><b>{{d.name}}</b></p>
-            </div>
-          </a>
-
-          <div class="display-row">
-            <p id="length" id='length'>{{d.length}} mi long</p>
+      <form class="">
+        {% if data %}
+        {% for d in data %}
+        <br>
+        <div class="card result">
+          <div class="trail-imgs">
+            <img src={{d.img}} alt="Hiking Trail" class="trail-img" />
           </div>
+          <div class="container col" id="results">
+            <div class="trail-info">
+              <div class="display-row">
+                <a href={{d.url}} style="width:80%;">
+                  <div class="display-row actions">
+                    <p id="name"><b>{{d.name}}</b></p>
+                  </div>
+                </a>
+                <form class="display-row" method="post">
+                  <div style=" display: flex; flex-direction: column; margin-top: 5px">
+                    <button type="submit" id="suggestion-good" value={{d.id}} name="good">
+                      <svg height="20" viewBox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg"
+                        style="margin-bottom: 2px">
+                        <path fill="forestgreen" d="m0 1v8c0 .552246.447693 1 1 1h3v-10h-3c-.552307 0-1 .447693-1 1z"
+                          transform="translate(0 5)" />
+                        <path fill="forestgreen"
+                          d="m9.15332 5.02979h-2.9541c-.258301 0-.387695-.172363-.431152-.246582-.043457-.0737305-.131348-.270508-.0063477-.496094l1.0415-1.87549c.228516-.410645.251953-.893555.0649414-1.32471-.187012-.43164-.556152-.744629-1.0127-.858398l-.734375-.183594c-.178711-.0449219-.368164.0122071-.492676.150391l-3.9873 4.42969c-.413574.460449-.641113 1.0542-.641113 1.67236v5.23242c0 1.37842 1.12158 2.5 2.5 2.5l4.97412-.0004883c1.12305 0 2.11475-.756348 2.41113-1.83887l1.06738-4.89844c.03125-.13623.0473633-.275879.0473633-.415527 0-1.01807-.828613-1.84668-1.84668-1.84668z"
+                          transform="translate(5 .97)" />
+                      </svg>
+                    </button>
+                    <label for="suggestion-good" style="text-align:center; font-size: 8px; margin:0 0 0 0px;">good
+                      suggestion</label>
+                  </div>
 
-          <p><b>👍 High user rating: {{ d.review.good[1]}}</b></p>
-          <p id="review">"{{ d.review.good[0]}}"</p>
-          <p><b>👎 Lower user rating: {{ d.review.bad[1]}}</b></p>
-          <p style="font-size: 90%; font-style: italic;">"{{ d.review.bad[0] }}"</p>
+                  <div style="display: flex; flex-direction: column; margin-top: 5px">
+                    <button type="submit" id="suggestion-bad" value={{d.id}} name="bad">
+                      <svg id="Bold" enable-background="new 0 0 24 24" height="20" viewBox="0 0 24 24" width="20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <!-- <g fi ='green'> -->
+                        <path fill='#df3a31'
+                          d="m22.25 1h-2.5c-.965 0-1.75.785-1.75 1.75v11.5c0 .965.785 1.75 1.75 1.75h2.5c.965 0 1.75-.785 1.75-1.75v-11.5c0-.965-.785-1.75-1.75-1.75z" />
+                        <path fill='#df3a31'
+                          d="m5.119.75c-1.95 0-3.61 1.4-3.94 3.32l-1.12 6.5c-.42 2.45 1.46 4.68 3.94 4.68h4.72s-.75 1.5-.75 4c0 3 2.25 4 3.25 4s1.5-.5 1.5-3c0-2.376 2.301-4.288 3.781-5.273v-12.388c-1.601-.741-4.806-1.839-9.781-1.839z" />
+                        <!-- </g> -->
+                      </svg>
+                    </button>
+                    <label for="suggestion-bad" style="text-align:center; font-size: 8px; margin:0 0 0 0px;">bad
+                      suggestion</label>
+                  </div>
+                </form>
+              </div>
 
-          <div class="activity-types">
-            <p id="difficulty-display">{{d.difficulty}}</p>
-            {% for activity in d.activity_types %}
-            <img src={{activity}} alt="activity icon" id="activity-type" />
-            {% endfor %}
-            <div id="attributes" class="display-row">
-              {% for attribute in d.attributes %}
-              <p id="attribute">{{ attribute }}</p>
-              {% endfor %}
+              <div class="display-row">
+                <p id="length" id='length'>{{d.length}} mi long</p>
+              </div>
+
+              <p><b>👍 High user rating: {{ d.review.good[1]}}</b></p>
+              <p id="review">"{{ d.review.good[0]}}"</p>
+              <p><b>👎 Lower user rating: {{ d.review.bad[1]}}</b></p>
+              <p style="font-size: 90%; font-style: italic;">"{{ d.review.bad[0] }}"</p>
+
+              <div class="activity-types">
+                <p id="difficulty-display">{{d.difficulty}}</p>
+                {% for activity in d.activity_types %}
+                <img src={{activity}} alt="activity icon" id="activity-type" />
+                {% endfor %}
+                <div id="attributes" class="display-row">
+                  {% for attribute in d.attributes %}
+                  <p id="attribute">{{ attribute }}</p>
+                  {% endfor %}
+                </div>
+
+
+              </div>
             </div>
-
-            <form class="display-row" method="post">
-              <div style="display: flex; flex-direction: column; padding-right: 10px">
-                <button type="submit" id="suggestion-good" value={{d.id}} name="good">
-                  <svg height="20" viewBox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 2px">
-                    <path fill="forestgreen" d="m0 1v8c0 .552246.447693 1 1 1h3v-10h-3c-.552307 0-1 .447693-1 1z"
-                      transform="translate(0 5)" />
-                    <path fill="forestgreen"
-                      d="m9.15332 5.02979h-2.9541c-.258301 0-.387695-.172363-.431152-.246582-.043457-.0737305-.131348-.270508-.0063477-.496094l1.0415-1.87549c.228516-.410645.251953-.893555.0649414-1.32471-.187012-.43164-.556152-.744629-1.0127-.858398l-.734375-.183594c-.178711-.0449219-.368164.0122071-.492676.150391l-3.9873 4.42969c-.413574.460449-.641113 1.0542-.641113 1.67236v5.23242c0 1.37842 1.12158 2.5 2.5 2.5l4.97412-.0004883c1.12305 0 2.11475-.756348 2.41113-1.83887l1.06738-4.89844c.03125-.13623.0473633-.275879.0473633-.415527 0-1.01807-.828613-1.84668-1.84668-1.84668z"
-                      transform="translate(5 .97)" />
-                  </svg>
-                </button>
-                <label for="suggestion-good" style="font-size: 8px; margin:0 0 0 0px;">good suggestion</label>
-              </div>
-
-              <div style="display: flex; flex-direction: column;">
-                <button type="submit" id="suggestion-bad" value={{d.id}} name="bad">
-                  <svg id="Bold" enable-background="new 0 0 24 24" height="20" viewBox="0 0 24 24" width="20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <!-- <g fi ='green'> -->
-                    <path fill='#df3a31'
-                      d="m22.25 1h-2.5c-.965 0-1.75.785-1.75 1.75v11.5c0 .965.785 1.75 1.75 1.75h2.5c.965 0 1.75-.785 1.75-1.75v-11.5c0-.965-.785-1.75-1.75-1.75z" />
-                    <path fill='#df3a31'
-                      d="m5.119.75c-1.95 0-3.61 1.4-3.94 3.32l-1.12 6.5c-.42 2.45 1.46 4.68 3.94 4.68h4.72s-.75 1.5-.75 4c0 3 2.25 4 3.25 4s1.5-.5 1.5-3c0-2.376 2.301-4.288 3.781-5.273v-12.388c-1.601-.741-4.806-1.839-9.781-1.839z" />
-                    <!-- </g> -->
-                  </svg>
-                </button>
-                <label for="suggestion-bad" style="font-size: 8px; margin:0 0 0 0px;">bad suggestion</label>
-              </div>
-            </form>
           </div>
         </div>
-      </div>
+        {% endfor %}
+        {% endif %}
+      </form>
     </div>
-    {% endfor %}
-    {% endif %}
-    </form>
-  </div>
   </div>
   </div>
 

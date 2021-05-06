@@ -26,15 +26,13 @@ class Result:
         self.length = ith_trails['Distance']
         self.difficulty = ith_trails['Difficulty']
         self.attributes = []
-        # activities = ["Walking", "Hiking", "Running", "Biking", "Horseback Riding", "Cross-Country Skiiing", "Snowshoeing"]
         activities = {"Walking": "static/walk-active.svg", "Hiking": "static/hike-active.svg", "Running": "static/run-active.svg", "Biking": "static/bike-active.svg",
                       "Horseback Riding": "static/horse-active.svg", "Cross-Country Skiiing": "static/ski-active.svg", "Snowshoeing": "static/snowshoe-active.svg"}
-        # self.activity_types = { i : False for i in activities }
         self.activity_types = []
         for attribute in ith_trails['Trail Attributes']:
             if attribute[9:] in activities:
                 self.activity_types.append(activities[attribute[9:]])
-            else:
+            elif (attribute[9:] not in activities) and (attribute[9:] != "Mountain Biking"):
                 self.attributes.append(attribute)
         self.attributes = self.attributes[:3]
         self.description = ith_trails['Description']

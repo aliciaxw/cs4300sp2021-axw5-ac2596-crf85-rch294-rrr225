@@ -57,7 +57,7 @@
     }
  
     #netid {
-     font-size: 75%;
+     font-size: 70%;
      }
  
     a {
@@ -105,7 +105,7 @@
  .card {
      /* margin: auto; */
     border-radius: 10px;
-    width: 55%;
+    width: 50%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
     transition: 0.3s;
     background-color:white;
@@ -114,7 +114,7 @@
   }
  
   .container {
-    padding: 10px 60px;
+    padding: 10px 40px;
     width:100%;
   }
  
@@ -490,7 +490,7 @@
     }
 
 .container {
-  padding: 10px 60px;
+  padding: 10px 50px;
   width: 100%;
 }
 
@@ -502,4 +502,9 @@
 .background-img {
   position: absolute;
 }
+
+.actions {
+    justify-content: space-between;
 }
+}
+
