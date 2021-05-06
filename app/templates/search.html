@@ -22,7 +22,8 @@
       mapTypeControl: false
     });
 
-    var markersArray = [];
+    var bounds = new google.maps.LatLngBounds();
+
     "{% if data %}"
     "{% for d in data %}"
     var myLatLng = { lat: parseFloat("{{d.gps[0]}}"), lng: parseFloat("{{d.gps[1]}}") }
@@ -31,6 +32,9 @@
       map,
       title: "{{d.name}}",
     });
+
+    // Zoom to fit markers
+    bounds.extend(marker.position);
     var contentString =
       '<p>{{d.name}}</p>';
 
@@ -42,15 +46,12 @@
       infowindow.open(map, marker);
     });
 
-    // Zoom to fit markers
-    markersArray.push(marker);
-    "    {% endfor %}"
-    "    {% endif %}"
-    var bounds = new google.maps.LatLngBounds();
-    for (var i = 0; i < markersArray.length; i++) {
-      bounds.extend(markersArray[i]);
-    }
+    "{% endfor %}"
+    "{% endif %}"
+
     map.fitBounds(bounds);
+    // Move camera right
+    map.panBy(-500, 0);
   }
 </script>
 

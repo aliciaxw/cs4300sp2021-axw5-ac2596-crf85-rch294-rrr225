@@ -105,7 +105,7 @@
  .card {
      /* margin: auto; */
     border-radius: 10px;
-    width: 60%;
+    width: 55%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
     transition: 0.3s;
     background-color:white;
